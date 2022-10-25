@@ -1,0 +1,12 @@
+best practices: 
+https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory
+backing up AD:
+https://docs.microsoft.com/en-us/windows/win32/ad/backing-up-and-restoring-an-active-directory-server
+Troubleshooting DNS Server:
+https://docs.microsoft.com/en-us/windows-server/networking/dns/troubleshoot/troubleshoot-dns-server
+Enable BitLocker (Hardening the Server):
+https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server
+Configure synchronized time:
+https://docs.microsoft.com/en-us/troubleshoot/windows-server/identity/configure-authoritative-time-server
+IMPORTANT: Download patch for Eternal Blue (SITE IS MOST LIKELY BLOCKED)
+https://www.catalog.update.microsoft.com/search.aspx?q=kb4012216

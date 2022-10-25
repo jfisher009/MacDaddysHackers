@@ -1,0 +1,6 @@
+Install windows server backup, once installed open the windows server backup window. 
+On the right panel, choose backup once, then go through the wizard and choose the necessary files to backup.
+        NOTE: You cannot backup the entire server, must choose specific files/config files to backup. You can back these up to the C: drive
+Backup the files to the C: drive. When done, make the file a zip file and then password protect it. Place it in somewhere like documents and name it something not obvious. 
+
+        NOTE 2: DO NOT DO THIS UNTIL YOU HAVE THE SERVER IN A COMFORTABLE STATE. 

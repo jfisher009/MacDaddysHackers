@@ -1,0 +1,35 @@
+configure
+set service HTTP protocol tcp port 80
+set service HTTPS protocol tcp port 443
+set service "SSH TCP" protocol tcp port 22
+set service "SSH UDP" protocol udp port 22
+set service MySQL protocol tcp port 3306
+set service "DNS TCP" protocol tcp port 53
+set service "DNS UDP" protocol udp port 53
+set service Splunk1 protocol tcp port 8089
+set service Splunk2 protocol tcp port 9997
+set service Splunk3 protocol tcp port 8000
+set service SMTP protocol tcp port 25
+set service POP3 protocol tcp port 110
+set service NTP protocol udp port 123
+set service "RPC Endpoint TCP" protocol tcp port 135
+set service "RPC Endpoint UDP" protocol udp port 135
+set service "NetBIOS Name TCP" protocol tcp port 137
+set service "NetBIOS Name UDP" protocol udp port 137
+set service "NetBIOS Datagram" protocol udp port 138
+set service "NetBIOS Session" protocol tcp port 139
+set service "SMB over IP TCP" protocol tcp port 445
+set service "SMB over IP UDP" protocol udp port 445
+set service "LDAP TCP" protocol tcp port 389
+set service "LDAP UDP" protocol udp port 389
+set service "LDAP SSL" protocol tcp port 636
+set service "Global Catalog LDAP" protocol tcp port 3268
+set service "Global Catalog LDAP over SSL" protocol tcp port 3269
+set service "Kerberos TCP" protocol tcp port 88
+set service "Kerberos UDP" protocol udp port 88
+set service "WINS Resolution TCP" protocol tcp port 1512
+set service "WINS Resolution UDP" protocol udp port 1512
+set service "WINS Replication TCP" protocol tcp port 42
+set service "WINS Replication UDP" protocol udp port 42
+set service IMAP protocol tcp port 143
+exit

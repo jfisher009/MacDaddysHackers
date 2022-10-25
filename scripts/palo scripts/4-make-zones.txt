@@ -1,0 +1,6 @@
+configure
+set zone PublicZone network layer3 ethernet1/1
+set zone InternalZone network layer3 ethernet1/2
+set zone OutsideZone network layer3 ethernet1/3
+set zone UserZone network layer3 ethernet1/4
+exit

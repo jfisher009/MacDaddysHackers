@@ -1,0 +1,5 @@
+In Powershell...
+
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
+Invoke-WebRequest "https://github.com/~~~~~~~~~~" -OutFile Test.zip
+Open File explorer and right click, then "Expand" the .zip file

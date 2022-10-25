@@ -1,0 +1,5 @@
+25 #smtp
+110 #pop3
+389 #ldap
+636 #ldap ssl
+53 #dns

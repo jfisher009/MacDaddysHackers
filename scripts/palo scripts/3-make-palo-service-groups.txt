@@ -1,0 +1,47 @@
+configure
+set service-group "Default Egress"
+set service-group "Default Egress" member HTTP
+set service-group "Default Egress" member HTTPS
+set service-group "Default Egress" member NTP
+
+set service-group Mail
+set service-group Mail member SMTP
+set service-group Mail member POP3
+set service-group Mail member IMAP
+
+set service-group DNS
+set service-group DNS member "DNS TCP"
+set service-group DNS member "DNS UDP"
+
+set service-group SSH
+set service-group SSH member "SSH TCP"
+set service-group SSH member "SSH UDP"
+
+set service-group "AD Group"
+set service-group "AD Group" member "RPC Endpoint TCP"
+set service-group "AD Group" member "RPC Endpoint UDP"
+set service-group "AD Group" member "NetBIOS Name TCP"
+set service-group "AD Group" member "NetBIOS Name UDP"
+set service-group "AD Group" member "NetBIOS Datagram"
+set service-group "AD Group" member "NetBIOS Session"
+set service-group "AD Group" member "LDAP TCP"
+set service-group "AD Group" member "LDAP UDP"
+set service-group "AD Group" member "LDAP SSL"
+set service-group "AD Group" member "Global Catalog LDAP"
+set service-group "AD Group" member "Global Catalog LDAP over SSL"
+set service-group "AD Group" member "Kerberos TCP"
+set service-group "AD Group" member "Kerberos UDP"
+set service-group "AD Group" member "WINS Resolution TCP"
+set service-group "AD Group" member "WINS Resolution UDP"
+set service-group "AD Group" member "WINS Replication TCP"
+set service-group "AD Group" member "WINS Replication UDP"
+
+
+set service-group "SMB" member "SMB over IP TCP"
+set service-group "SMB" member "SMB over IP UDP"
+
+set service-group Splunk
+set service-group Splunk member Splunk1
+set service-group Splunk member Splunk2
+set service-group Splunk member Splunk3
+exit
