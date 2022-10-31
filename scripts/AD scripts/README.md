@@ -36,6 +36,8 @@ Otherwise, when you have time complete the below tasks.
 
 - Enable BitLocker. This is in "Server Manager" > "Manage" > "Add roles and features" > "Features".
 
+  You will need to restart the server for this change to take effect.
+
 - Add logon banner (read below before starting this)
   The below text is what you should use. You can copy and paste this, just make sure to FIX DATE & TEAM NUMBER.
   Also, if there is an inject asking for this, make sure it includes anything and everything the inject asks for. 
