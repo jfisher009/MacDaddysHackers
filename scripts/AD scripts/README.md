@@ -34,7 +34,7 @@ Otherwise, when you have time complete the below tasks.
 
 - Stop and disable printspooler. This is in the services screen.
 
-- Enable BitLocker. This is in "Server Manager" > "Manage" > "Add roles and features".
+- Enable BitLocker. This is in "Server Manager" > "Manage" > "Add roles and features" > "Features".
 
 - Add logon banner (read below before starting this)
   The below text is what you should use. You can copy and paste this, just make sure to FIX DATE & TEAM NUMBER.
