@@ -1,0 +1,10 @@
+#!/bin/sh
+
+iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+iptables -A INPUT -j DROP
+
+iptables -I OUTPUT -p tcp -m tcp --dport 80 -j ACCEPT
+iptables -I OUTPUT -p tcp -m tcp --dport 443 -j ACCEPT
+iptables -A OUTPUT -j DROP
+
