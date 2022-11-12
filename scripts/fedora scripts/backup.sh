@@ -1,7 +1,6 @@
 #!/bin/bash
 
 mkdir /var/fedorabackups
-m
 cp /etc/dovecot/* /var/fedorabackups
 cp /etc/dovecot/conf.d/* /var/fedorabackups
 
