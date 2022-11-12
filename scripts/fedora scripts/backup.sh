@@ -1,9 +1,15 @@
 #!/bin/bash
 
-mkdir /var/fedorabackups
-cp -r /etc/dovecot/* /var/fedorabackups
-cp -r /etc/dovecot/conf.d/* /var/fedorabackups
+mkdir /etc/backups/
+mkdir /etc/backups/dovecot
+mkdir /etc/backups/dovecot/conf.d
 
-cp -r /etc/postfix/* /var/fedorabackups
+cp /etc/dovecot/* /etc/backups/dovecot
+cp /etc/dovecot/conf.d/* /etc/backups/dovecot/conf.d
 
-cp -r /etc/chrony.* /var/fedorabackups
+
+mkdir /etc/backups/postfix
+cp /etc/postfix/* /etc/backups/postfix
+
+mkdir /etc/backups/chronyd
+cp /etc/chrony.* /etc/backups/chronyd
