@@ -31,5 +31,4 @@ if [ -d "/var/lib/mysql" ]; then
     mysqldump -u root -p --all-databases > /var/backups/mysql.sql
 fi
 
-becho "Making backups immutable"
-chattr +i -R /var/backups/*
+
