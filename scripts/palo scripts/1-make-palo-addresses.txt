@@ -11,11 +11,11 @@ set address "internal segment" ip-netmask 172.20.240.254/24
 set address "user segment" ip-netmask 172.20.242.254/24
 set address "public segment" ip-netmask 172.20.241.254/24
 
-set address "ad-nat" ip-netmask 172.25.26.27
-set address "centos-nat" ip-netmask 172.25.26.11
-set address "debian-nat" ip-netmask 172.25.26.20
-set address "docker-nat" ip-netmask 172.25.26.97
-set address "fedora-nat" ip-netmask 172.25.26.39
-set address "splunk-nat" ip-netmask 172.25.26.9
-set address "ubuntu web-nat" ip-netmask 172.25.26.23
+set address "ad-nat" ip-netmask 172.25.25.27
+set address "centos-nat" ip-netmask 172.25.25.11
+set address "debian-nat" ip-netmask 172.25.25.20
+set address "docker-nat" ip-netmask 172.25.25.97
+set address "fedora-nat" ip-netmask 172.25.25.39
+set address "splunk-nat" ip-netmask 172.25.25.9
+set address "ubuntu web-nat" ip-netmask 172.25.25.23
 exit
