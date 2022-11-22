@@ -1,0 +1,21 @@
+Because Docker is not scored at the beginning of the competition implement a block all inbound rule.
+
+Search for windows fire wall.
+
+right click on Inbound Rules and create a New Rule.
+
+
+
+Select Port
+Click Next
+
+
+Select TCP
+Select All Ports
+
+
+Select Block the connection
+
+MAke sure all 3 boxes are checked.
+
+Name the rule block all and select finish.
