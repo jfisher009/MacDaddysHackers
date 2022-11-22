@@ -1,0 +1,6 @@
+launch windows fire wall.
+
+
+Scroll down to File and Printer Sharing (Echo Request ICMPv4-in)
+
+right click on it and enable it.
