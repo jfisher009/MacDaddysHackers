@@ -1,1 +1,4 @@
 wget -O splunkforwarder-7.3.8-bdc98854fc40-x64-release.msi 'https://download.splunk.com/products/universalforwarder/releases/7.3.8/windows/splunkforwarder-7.3.8-bdc98854fc40-x64-release.msi'
+
+DON'T TYPE THIS IN CMD OR POWERSHELL
+Just paste the URL in chrome :)
