@@ -12,7 +12,7 @@ Open the downloaded file.
 Check the box to accept the license agreement, and make sure "An on-premises Splunk Enterprise instance" is selected. Click Customize Options.
 On the "Install UniversalForwarder to:" screen, click next, next.
 On the "Install UniversalForwarder as:" screen, ensure "Local System" is selected, then click next.
-Select every log type. Ensure every important box is selected. Do not send things like CPU Load. Those are not important. Then click next.
+Select every log type. Ensure every box under "Windows Event Logs" and "Active Directory Monitoring" is checked. Do not check the boxes under "Performance". Those are not important. Then click next.
 For the Username of the Administrator Account, make it "admin" and do not generate a random password. Make the password something you will remember. Click next.
 Do not configure anything on the Deployment Server. Click Next.
 On the "Receiving Indexer" screen, the IP should be the internal IP Address of the splunk machine. Make the port 9997. Click Next. 
