@@ -1,0 +1,21 @@
+wget -O splunkforwarder-7.3.8-bdc98854fc40-x64-release.msi 'https://download.splunk.com/products/universalforwarder/releases/7.3.8/windows/splunkforwarder-7.3.8-bdc98854fc40-x64-release.msi'
+
+^^This does not work anymore, is used only as reference now. Use below method first.
+DON'T TYPE THIS IN CMD OR POWERSHELL
+Just paste this URL in chrome :)
+https://download.splunk.com/products/universalforwarder/releases/9.0.2/windows/splunkforwarder-9.0.2-17e00c557dc1-x64-release.msi
+
+
+INSTALLATION INSTRUCTIONS:
+
+Open the downloaded file.
+Check the box to accept the license agreement, and make sure "An on-premises Splunk Enterprise instance" is selected. Click Customize Options.
+On the "Install UniversalForwarder to:" screen, click next, next.
+On the "Install UniversalForwarder as:" screen, ensure "Local System" is selected, then click next.
+Select every log type. Ensure every box is selected, then click next.
+For the Username of the Administrator Account, make it "admin" and do not generate a random password. Make the password something you will remember. Click next.
+Do not configure anything on the Deployment Server. Click Next.
+On the "Receiving Indexer" screen, the IP should be the internal IP Address of the splunk machine. Make the port 9997. Click Next. 
+Click Install to install the forwarder, and wait for it to install. 
+Click Finish.
+Finally, confirm with splunk people to ensure events are being forwarded to splunk. If it isn't working within 10 minutes, uninstall the program (stop the service if necessary) and re-install following the same steps.
