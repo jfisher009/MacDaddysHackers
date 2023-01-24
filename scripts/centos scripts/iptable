@@ -1,10 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
-iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
-iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
-iptables -A INPUT -j DROP
+# Create custom chain
+iptables -N http_https
 
-iptables -I OUTPUT -p tcp -m tcp --dport 80 -j ACCEPT
-iptables -I OUTPUT -p tcp -m tcp --dport 443 -j ACCEPT
-iptables -A OUTPUT -j DROP
+# Allow incoming traffic on port 80 (HTTP)
+iptables -A http_https -p tcp --dport 80 -j ACCEPT
 
+# Allow incoming traffic on port 443 (HTTPS)
+iptables -A http_https -p tcp --dport 443 -j ACCEPT
+
+# Drop all other incoming traffic
+iptables -A http_https -j DROP
+
+# Jump to custom chain for input traffic
+iptables -A INPUT -j http_https
