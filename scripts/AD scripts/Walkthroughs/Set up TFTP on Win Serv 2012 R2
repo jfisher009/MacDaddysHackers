@@ -1,5 +1,21 @@
 http://woshub.com/how-to-install-tftp-server-on-windows-server-2012-r2/
 
-MAKE NOTES BELOW ON THE FOLLOWING:
-  ANY NECESSARY CHANGES
-  HOW TO SECURE
+DO NOT USE THE ABOVE LINK!!!
+it was my starting point. I've left a simplified walkthrough below, so that you do not have to suffer as I have.
+If you are lost though, feel free to take a look at the walkthrough. it includes screenshots that might be helpful
+\jacob
+
+In Server Manager, install the "Windows Deployment Services" role in the "Add Roles and Features Wizard". Then, in "Role Services" only select "Transport Server." Click next and install.
+Open file manager and create a folder here > C:\tftp
+open Registry Editor (powershell: "regedit") and navigate to HKLM\SYSTEM\CurrentControlSet\services\WDSServer\Providers\WDSTFTP
+Create a new string paramater with the name "RootFolder" and set the value to the folder you created earlier (C:\tftp)
+Start WDS with this command: WDSUTIL /Start-TransportServer
+Now return to the "Add Roles and Features Wizard" in Server Manager. Install the "TFTP Client" feature, and the "Deployment Server" role you deselected earlier from the WDS Section. 
+In Server Manager, in the left column select "WDS", right click the server, and click "Windows Deployment Services Management Console"
+Expand Servers and right click the server. Click Configure Server
+Click Next, Next, and on the "Folder Location" screen, change the path from "C:\RemoteInstall" to "C:\tftp" Click "yes" on the pop up and hit next. Do not integrate with AD, make it a standalone server.
+Click next and ensure the "add images to the server now" box is checked. Click Finish, then cancel.
+Create a file in the C:\tftp\boot folder called test.txt. This will be the file you test the tftp server with. 
+Remove the "Deployment Server" role you installed earlier through the "remove roles and features wizard" in server manager.
+Run the following command to test the tftp server: tftp -i localhost get boot\test.txt
+You should see that the file has successfully downloaded.
