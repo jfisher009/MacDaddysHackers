@@ -1,21 +1,21 @@
+
 #!/bin/bash
+# Flush all existing rules
+iptables -F
 
-# update installer and install iptables
-sudo apt-get update
-sudo apt-get install iptables
+# Allow traffic on ports 25, 587, 143, 993, 110 and 995
+iptables -A INPUT -p tcp --dport 25 -j ACCEPT
+iptables -A INPUT -p tcp --dport 587 -j ACCEPT
+iptables -A INPUT -p tcp --dport 143 -j ACCEPT
+iptables -A INPUT -p tcp --dport 993 -j ACCEPT
+iptables -A INPUT -p tcp --dport 110 -j ACCEPT
+iptables -A INPUT -p tcp --dport 995 -j ACCEPT
 
-#check status of current ip tables
-echo 'The current status of ip tables'
-sudo iptables -L -v
+# Allow traffic for responses to established connections
+iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-#define chain rules
-sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT  #SSH
-sudo iptables -A INPUT -p tcp --dport 25 -j ACCEPT  #SMTP
-sudo iptables -A INPUT -p tcp --dport 110 -j ACCEPT #POP3 
+# Reject all other outgoing traffic
+iptables -A OUTPUT -j REJECT
 
-#drop all other traffic
-sudo iptables -A INPUT -j DROP
-
-#check status of current ip tables
-echo 'The current status of ip tables is now'
-sudo iptables -L -v
+# Block all other incoming traffic
+iptables -A INPUT -j DROP
