@@ -5,6 +5,9 @@ sudo ./splunk start --accept-license
 sudo ./splunk enable boot-start
 /opt/splunkforwarder/bin/splunk add forward-server 172.20.241.20:9997
 /opt/splunkforwarder/bin/splunk add monitor /var/log/auth.log -index main -sourcetype syslog
+# This line added for centos
+/opt/splunkforwarder/bin/splunk add monitor /var/log/auth.log -index main -sourcetype linux_secure
+
 /opt/splunkforwarder/bin/splunk add monitor /var/log/apache2/access.log -index main -sourcetype weblog
 /opt/splunkforwarder/bin/splunk add monitor /var/log/apache2/error.log -index main -sourcetype weblog
 /opt/splunkforwarder/bin/splunk add monitor /var/log/httpd/access_log -index main -sourcetype weblog
