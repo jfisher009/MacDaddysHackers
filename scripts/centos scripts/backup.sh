@@ -15,11 +15,11 @@ becho() {
 mkdir -p /var/backups
 
 becho "Backing up pam"
-cp -r /etc/pam* /var/backups
-cp -r /lib/security* /var/backups
+cp -ra /etc/pam* /var/backups
+cp -ra /lib/security* /var/backups
 
 becho "Backing up configuration files from /etc"
-cp -r /etc /var/backups
+cp -ra /etc /var/backups
 
 if [ -d "/var/www" ]; then
     becho "Backing up web files"
