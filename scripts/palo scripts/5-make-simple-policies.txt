@@ -30,8 +30,8 @@ set rulebase security rules "Fedora AD Access" from Public source fedora to User
 set rulebase security rules "Internal Splunk" from Internal source any to Public destination splunk application any service Splunk action allow
 set rulebase security rules "Internal Splunk" from User source any to Public destination splunk application any service Splunk action allow
 
-set rulebase security rules "Serve Splunk" from any source any to Public destination splunk application any service Splunk1 action allow
 set rulebase security rules "Serve Splunk" from any source any to Public destination splunk application any service Splunk3 action allow
+set rulebase security rules "Fedora Mail" destination splunk-nat
 
 set rulebase security rules "Default Egress" from any source any to External destination any application any service NTP action allow
 set rulebase security rules "Default Egress" from any source any to External destination any application any service HTTP action allow
