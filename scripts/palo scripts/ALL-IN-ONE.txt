@@ -51,7 +51,9 @@ set service "WINS Resolution TCP" protocol tcp port 1512
 set service "WINS Resolution UDP" protocol udp port 1512
 set service "WINS Replication TCP" protocol tcp port 42
 set service "WINS Replication UDP" protocol udp port 42
-set service IMAP protocol tcp port 143
+set service IMAP protocol tcp port 143143
+set service "VPN 500" protocol udp port 500
+set service "VPN 4500" protocol udp port 4500
 
 
 configure
