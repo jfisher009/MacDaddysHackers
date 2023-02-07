@@ -7,3 +7,41 @@ https://www.snel.com/support/how-to-set-up-an-l2tp-ipsec-vpn-on-windows-server-2
 
 
 Personalized walkthrough:
+Run the following commands in powershell as admin:
+
+Install-WindowsFeature RemoteAccess
+Install-WindowsFeature DirectAccess-VPN -IncludeManagementTools
+Install-WindowsFeature Routing -IncludeManagementTools
+
+Server Manager > Tools > Remote Access Management
+Run the Remote Access Setup Wizard
+Deploy VPN Only
+Right click the server and click "Configure and Enable Routing and Remote Access"
+Click next and then select "Custom Configuration"
+Select only VPN Access
+Finish and then start service
+Right click the server and click "Properties"
+Under the security tab select the box that allows L2TP/IKEv2 connections. 
+Enter a secure password for the VPN and save it. This will be used by clients to connect to the VPN. Click OK
+Under the IPv4 tab select "static address pool" and click "add"
+Make the start and end address within your subnet. Don't allow an IP that is currently being used.
+Click apply and close that window.
+Right click the server, All Tasks > Restart
+Open your firewall rules and add a new inbound rule. Predefined, "Routing and Remote Access." Click next
+Check the "L2TP-In" box and click next. Allow the connection and finish.
+In Active directory Users and Computers, add a VPN user. Create a secure password for this account. This account will be used to log in to the VPN. The password should be unique.
+Make sure to not require the user to change their password on next login.
+Right click the user and select "Properties"
+Under the "Dial In" tab, allow access under the Network Access Permission section. Click OK.
+Open services.msc
+Stop and Start the "IKE and AuthIP IPsec Keying Modules" service.
+
+The next steps must be completed on both the server as well as the client that will the VPN.
+Open regedit
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent
+Right click, new > DWORD (32-bit) Value
+Name the value "AssumeUDPEncapsulationContextOnSendRule"
+Set the value to 2 (Hexadecimal)
+
+Test the VPN
+https://www.snel.com/support/learn-how-to-connect-l2tp-ipsec-vpn-on-windows-10/
