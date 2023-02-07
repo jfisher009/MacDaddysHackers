@@ -46,3 +46,5 @@ Restart the machine for the effects to take place.
 
 Test the VPN
 https://www.snel.com/support/learn-how-to-connect-l2tp-ipsec-vpn-on-windows-10/
+
+Ensure at the firewall level we are allowing UDP Ports 500 and 4500 from outside in.
