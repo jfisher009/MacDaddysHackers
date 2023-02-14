@@ -10,13 +10,13 @@ set address "palo mgmt" ip-netmask 172.20.242.150
 set address "internal segment" ip-netmask 172.20.240.254/24
 set address "user segment" ip-netmask 172.20.242.254/24
 set address "public segment" ip-netmask 172.20.241.254/24
-set address "ad-nat" ip-netmask 172.25.25.27
-set address "centos-nat" ip-netmask 172.25.25.11
-set address "debian-nat" ip-netmask 172.25.25.20
-set address "docker-nat" ip-netmask 172.25.25.97
-set address "fedora-nat" ip-netmask 172.25.25.39
-set address "splunk-nat" ip-netmask 172.25.25.9
-set address "ubuntu web-nat" ip-netmask 172.25.25.23
+set address "ad-nat" ip-netmask 172.25.34.27
+set address "centos-nat" ip-netmask 172.25.34.11
+set address "debian-nat" ip-netmask 172.25.34.20
+set address "docker-nat" ip-netmask 172.25.34.97
+set address "fedora-nat" ip-netmask 172.25.34.39
+set address "splunk-nat" ip-netmask 172.25.34.9
+set address "ubuntu web-nat" ip-netmask 172.25.34.23
 
 
 set service HTTP protocol tcp port 80
@@ -30,7 +30,11 @@ set service Splunk1 protocol tcp port 8089
 set service Splunk2 protocol tcp port 9997
 set service Splunk3 protocol tcp port 8000
 set service SMTP protocol tcp port 25
+set service SMTP-TLS protocol tcp port 587
 set service POP3 protocol tcp port 110
+set service POP3-TLS protocol tcp port 995
+set service IMAP protocol tcp port 143
+set service IMAP-TLS protocol tcp port 993
 set service NTP protocol udp port 123
 set service "RPC Endpoint TCP" protocol tcp port 135
 set service "RPC Endpoint UDP" protocol udp port 135
@@ -51,7 +55,6 @@ set service "WINS Resolution TCP" protocol tcp port 1512
 set service "WINS Resolution UDP" protocol udp port 1512
 set service "WINS Replication TCP" protocol tcp port 42
 set service "WINS Replication UDP" protocol udp port 42
-set service IMAP protocol tcp port 143143
 set service "VPN 500" protocol udp port 500
 set service "VPN 4500" protocol udp port 4500
 
@@ -61,34 +64,39 @@ set service-group "Default Egress"
 set service-group "Default Egress" member HTTP
 set service-group "Default Egress" member HTTPS
 set service-group "Default Egress" member NTP
+set service-group "Default Egress" member "DNS TCP"
+set service-group "Default Egress" member "DNS UDP"
 set service-group Mail
 set service-group Mail member SMTP
+set service-group Mail member SMTP-TLS
 set service-group Mail member POP3
+set service-group Mail member POP3-TLS
 set service-group Mail member IMAP
+set service-group Mail member IMAP-TLS
 set service-group DNS
 set service-group DNS member "DNS TCP"
 set service-group DNS member "DNS UDP"
 set service-group SSH
 set service-group SSH member "SSH TCP"
 set service-group SSH member "SSH UDP"
-set service-group "AD Group"
-set service-group "AD Group" member "RPC Endpoint TCP"
-set service-group "AD Group" member "RPC Endpoint UDP"
-set service-group "AD Group" member "NetBIOS Name TCP"
-set service-group "AD Group" member "NetBIOS Name UDP"
-set service-group "AD Group" member "NetBIOS Datagram"
-set service-group "AD Group" member "NetBIOS Session"
-set service-group "AD Group" member "LDAP TCP"
-set service-group "AD Group" member "LDAP UDP"
-set service-group "AD Group" member "LDAP SSL"
-set service-group "AD Group" member "Global Catalog LDAP"
-set service-group "AD Group" member "Global Catalog LDAP over SSL"
-set service-group "AD Group" member "Kerberos TCP"
-set service-group "AD Group" member "Kerberos UDP"
-set service-group "AD Group" member "WINS Resolution TCP"
-set service-group "AD Group" member "WINS Resolution UDP"
-set service-group "AD Group" member "WINS Replication TCP"
-set service-group "AD Group" member "WINS Replication UDP"
+set service-group "Fedora Auth"
+set service-group "Fedora Auth" member "RPC Endpoint TCP"
+set service-group "Fedora Auth" member "RPC Endpoint UDP"
+set service-group "Fedora Auth" member "NetBIOS Name TCP"
+set service-group "Fedora Auth" member "NetBIOS Name UDP"
+set service-group "Fedora Auth" member "NetBIOS Datagram"
+set service-group "Fedora Auth" member "NetBIOS Session"
+set service-group "Fedora Auth" member "LDAP TCP"
+set service-group "Fedora Auth" member "LDAP UDP"
+set service-group "Fedora Auth" member "LDAP SSL"
+set service-group "Fedora Auth" member "Global Catalog LDAP"
+set service-group "Fedora Auth" member "Global Catalog LDAP over SSL"
+set service-group "Fedora Auth" member "Kerberos TCP"
+set service-group "Fedora Auth" member "Kerberos UDP"
+set service-group "Fedora Auth" member "WINS Resolution TCP"
+set service-group "Fedora Auth" member "WINS Resolution UDP"
+set service-group "Fedora Auth" member "WINS Replication TCP"
+set service-group "Fedora Auth" member "WINS Replication UDP"
 set service-group "SMB" member "SMB over IP TCP"
 set service-group "SMB" member "SMB over IP UDP"
 set service-group Splunk
@@ -97,7 +105,7 @@ set service-group Splunk member Splunk2
 set service-group Splunk member Splunk3
 
 
-delete rulebase security 
+delete rulebase security
 set rulebase security rules "Allow Ping" from any source any to any destination any application ping service application-default action allow
 set rulebase security rules "Block EB" from any source any to any destination any application any service SMB action deny
 set rulebase security rules "Debian DNS In" from any source any to Internal destination debian application any service DNS action allow
@@ -115,7 +123,7 @@ set rulebase security rules "Centos E-comm" destination centos-nat
 set rulebase security rules "Centos E-comm" from any source any to Public destination centos application any service HTTPS action allow
 set rulebase security rules "Fedora Mail" from any source any to Public destination fedora application any service Mail action allow
 set rulebase security rules "Fedora Mail" destination fedora-nat
-set rulebase security rules "Fedora AD Access" from Public source fedora to User destination ad application any service "AD Group" action allow
+set rulebase security rules "Fedora AD Access" from Public source fedora to User destination ad application any service "Fedora Auth" action allow
 set rulebase security rules "Internal Splunk" from Internal source any to Public destination splunk application any service Splunk action allow
 set rulebase security rules "Internal Splunk" from User source any to Public destination splunk application any service Splunk action allow
 set rulebase security rules "Serve Splunk" from any source any to Public destination splunk application any service Splunk3 action allow
@@ -123,7 +131,7 @@ set rulebase security rules "Fedora Mail" destination splunk-nat
 set rulebase security rules "Default Egress" from any source any to External destination any application any service NTP action allow
 set rulebase security rules "Default Egress" from any source any to External destination any application any service HTTP action allow
 set rulebase security rules "Default Egress" from any source any to External destination any application any service HTTPS action allow
-
+set rulebase security rules "Default Egress" from any source any to External destination any application any service HTTPS action allow
 
 set profiles virus Best_Sec_Policy decoder ftp action reset-both
 set profiles virus Best_Sec_Policy decoder http action reset-both
