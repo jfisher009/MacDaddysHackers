@@ -79,25 +79,10 @@ set service-group SSH
 set service-group SSH member "SSH TCP"
 set service-group SSH member "SSH UDP"
 set service-group "Fedora Auth"
-set service-group "Fedora Auth" member "RPC Endpoint TCP"
-set service-group "Fedora Auth" member "RPC Endpoint UDP"
-set service-group "Fedora Auth" member "NetBIOS Name TCP"
-set service-group "Fedora Auth" member "NetBIOS Name UDP"
-set service-group "Fedora Auth" member "NetBIOS Datagram"
-set service-group "Fedora Auth" member "NetBIOS Session"
-set service-group "Fedora Auth" member "LDAP TCP"
-set service-group "Fedora Auth" member "LDAP UDP"
-set service-group "Fedora Auth" member "LDAP SSL"
-set service-group "Fedora Auth" member "Global Catalog LDAP"
-set service-group "Fedora Auth" member "Global Catalog LDAP over SSL"
-set service-group "Fedora Auth" member "Kerberos TCP"
-set service-group "Fedora Auth" member "Kerberos UDP"
-set service-group "Fedora Auth" member "WINS Resolution TCP"
-set service-group "Fedora Auth" member "WINS Resolution UDP"
-set service-group "Fedora Auth" member "WINS Replication TCP"
-set service-group "Fedora Auth" member "WINS Replication UDP"
-set service-group "SMB" member "SMB over IP TCP"
-set service-group "SMB" member "SMB over IP UDP"
+set service-group memeber LDAP-TCP
+set service-group memeber LDAP-UDP
+set service-group memeber LDAPS-TCP
+set service-group memeber LDAPS-UDP
 set service-group Splunk
 set service-group Splunk member Splunk1
 set service-group Splunk member Splunk2
