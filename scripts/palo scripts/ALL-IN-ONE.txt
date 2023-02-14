@@ -28,7 +28,7 @@ set service "DNS UDP" protocol udp port 53
 set service Splunk1 protocol tcp port 8089
 set service Splunk2 protocol tcp port 9997
 set service Splunk3 protocol tcp port 8000
-set service LMTP protocol tcp port 
+set service LMTP protocol tcp port 24
 set service POP3 protocol tcp port 110
 set service POP3-TLS protocol tcp port 995
 set service IMAP protocol tcp port 143
@@ -53,10 +53,10 @@ set service "WINS Resolution TCP" protocol tcp port 1512
 set service "WINS Resolution UDP" protocol udp port 1512
 set service "WINS Replication TCP" protocol tcp port 42
 set service "WINS Replication UDP" protocol udp port 42
-set service LDAP-TCP protocol TCP 389
-set service LDAP-UDP protocol UDP 389
-set servuce LDAPS-TCP protocol TCP 636
-set servuce LDAPS-UDP protocol UDP 636
+set service LDAP-TCP protocol tcp 389
+set service LDAP-UDP protocol udp 389
+set servuce LDAPS-TCP protocol tcp 636
+set servuce LDAPS-UDP protocol udp 636
 set service "VPN 500" protocol udp port 500
 set service "VPN 4500" protocol udp port 4500
 
@@ -79,10 +79,10 @@ set service-group SSH
 set service-group SSH member "SSH TCP"
 set service-group SSH member "SSH UDP"
 set service-group "Fedora Auth"
-set service-group memeber LDAP-TCP
-set service-group memeber LDAP-UDP
-set service-group memeber LDAPS-TCP
-set service-group memeber LDAPS-UDP
+set service-group "Fedora Auth" memeber LDAP-TCP
+set service-group "Fedora Auth" memeber LDAP-UDP
+set service-group "Fedora Auth" memeber LDAPS-TCP
+set service-group "Fedora Auth" memeber LDAPS-UDP
 set service-group Splunk
 set service-group Splunk member Splunk1
 set service-group Splunk member Splunk2
