@@ -21,5 +21,11 @@
 change server to the debian ip address
 run `service ntpd restart` to restart the ntp process
 run `ntpq -p` to see the current ntp
+`ntpstat` to see the current ntp status
+
+
+### To see from windows
+add a route to the splunk machine from admin cmd at win10 `add route...`  
+make sure the firewall is on `netsh advfirewall set allprofiles state on`  
 
 
