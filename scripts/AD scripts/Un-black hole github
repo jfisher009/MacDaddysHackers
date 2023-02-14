@@ -1,0 +1,4 @@
+set primary dns to 8.8.8.8
+set secondary dns to 1.1.1.1
+in ipv6 settings remove ::1 as the primary dns
+check github.com
