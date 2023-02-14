@@ -43,9 +43,6 @@ set service "NetBIOS Datagram" protocol udp port 138
 set service "NetBIOS Session" protocol tcp port 139
 set service "SMB over IP TCP" protocol tcp port 445
 set service "SMB over IP UDP" protocol udp port 445
-set service "LDAP TCP" protocol tcp port 389
-set service "LDAP UDP" protocol udp port 389
-set service "LDAP SSL" protocol tcp port 636
 set service "Global Catalog LDAP" protocol tcp port 3268
 set service "Global Catalog LDAP over SSL" protocol tcp port 3269
 set service "Kerberos TCP" protocol tcp port 88
@@ -56,8 +53,8 @@ set service "WINS Replication TCP" protocol tcp port 42
 set service "WINS Replication UDP" protocol udp port 42
 set service "LDAP TCP" protocol tcp 389
 set service "LDAP UDP" protocol udp 389
-set servuce "LDAPS TCP" protocol tcp 636
-set servuce "LDAPS UDP" protocol udp 636
+set service "LDAPS TCP" protocol tcp 636
+set service "LDAPS UDP" protocol udp 636
 set service "VPN 500" protocol udp port 500
 set service "VPN 4500" protocol udp port 4500
 
