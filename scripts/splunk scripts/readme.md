@@ -15,5 +15,4 @@
 ### Login Banner
 `vi /etc/motd`  
 
-### Block SSH iptables
-``
+
