@@ -88,10 +88,10 @@ set service-group Splunk member Splunk1
 set service-group Splunk member Splunk2
 set service-group Splunk member Splunk3
 set service-group SMB
-set service-group Splunk member "SMB over IP TCP"
-set service-group Splunk member "SMB over IP UDP2"
-set service-group Splunk member "SMB over IP TCP"
-set service-group Splunk member "SMB over IP UDP2"
+set service-group SMB "SMB over IP TCP"
+set service-group SMB "SMB over IP UDP2"
+set service-group SMB "SMB over IP TCP"
+set service-group SMB "SMB over IP UDP2"
 
 delete rulebase security
 set rulebase security rules "Allow Ping" from any source any to any destination any application ping service application-default action allow
