@@ -57,8 +57,6 @@ set service "WINS Replication UDP" protocol udp port 42
 set service "VPN 500" protocol udp port 500
 set service "VPN 4500" protocol udp port 4500
 
-
-configure
 set service-group "Default Egress"
 set service-group "Default Egress" member HTTP
 set service-group "Default Egress" member HTTPS
