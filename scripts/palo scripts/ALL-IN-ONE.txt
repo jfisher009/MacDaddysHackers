@@ -54,6 +54,10 @@ set service "WINS Resolution TCP" protocol tcp port 1512
 set service "WINS Resolution UDP" protocol udp port 1512
 set service "WINS Replication TCP" protocol tcp port 42
 set service "WINS Replication UDP" protocol udp port 42
+set service LDAP-TCP protocol TCP 389
+set service LDAP-UDP protocol UDP 389
+set servuce LDAPS-TCP protocol TCP 636
+set servuce LDAPS-UDP protocol UDP 636
 set service "VPN 500" protocol udp port 500
 set service "VPN 4500" protocol udp port 4500
 
