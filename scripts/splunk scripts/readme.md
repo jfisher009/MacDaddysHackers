@@ -15,4 +15,10 @@
 ### Login Banner
 `vi /etc/motd`  
 
+### Change NTP Server
+`vi /etc/ntp.conf`
+change server to the debian ip address
+run `service ntpd restart` to restart the ntp process
+run `ntpq -p` to see the current ntp
+
 
