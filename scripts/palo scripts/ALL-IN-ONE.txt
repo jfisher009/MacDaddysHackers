@@ -29,8 +29,7 @@ set service "DNS UDP" protocol udp port 53
 set service Splunk1 protocol tcp port 8089
 set service Splunk2 protocol tcp port 9997
 set service Splunk3 protocol tcp port 8000
-set service SMTP protocol tcp port 25
-set service SMTP-TLS protocol tcp port 587
+set service LMTP protocol tcp port 
 set service POP3 protocol tcp port 110
 set service POP3-TLS protocol tcp port 995
 set service IMAP protocol tcp port 143
@@ -67,8 +66,7 @@ set service-group "Default Egress" member NTP
 set service-group "Default Egress" member "DNS TCP"
 set service-group "Default Egress" member "DNS UDP"
 set service-group Mail
-set service-group Mail member SMTP
-set service-group Mail member SMTP-TLS
+set service-group Mail member LMTP
 set service-group Mail member POP3
 set service-group Mail member POP3-TLS
 set service-group Mail member IMAP
