@@ -18,7 +18,6 @@ set address "fedora-nat" ip-netmask 172.25.34.39
 set address "splunk-nat" ip-netmask 172.25.34.9
 set address "ubuntu web-nat" ip-netmask 172.25.34.23
 
-
 set service HTTP protocol tcp port 80
 set service HTTPS protocol tcp port 443
 set service "SSH TCP" protocol tcp port 22
@@ -103,7 +102,6 @@ set service-group Splunk
 set service-group Splunk member Splunk1
 set service-group Splunk member Splunk2
 set service-group Splunk member Splunk3
-
 
 delete rulebase security
 set rulebase security rules "Allow Ping" from any source any to any destination any application ping service application-default action allow
