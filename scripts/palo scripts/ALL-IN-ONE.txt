@@ -96,7 +96,7 @@ set service-group SMB member "SMB over IP UDP2"
 
 delete rulebase security
 set rulebase security rules "Allow Ping" from any source any to any destination any application ping service application-default action allow
-set rulebase security rules "Block Bad Port" from any source any to any destination any application any service SMB action deny
+set rulebase security rules "Block Bad Ports" from any source any to any destination any application any service SMB action deny
 set rulebase security rules "Block Bad IPs In" from any source BadGuys to any destination any application any service SMB action deny
 set rulebase security rules "Block Bad IPs Out" from any source any to any destination BadGuys application any service any action deny
 set rulebase security rules "Debian DNS In" from any source any to Internal destination debian application any service DNS action allow
@@ -172,7 +172,7 @@ set profile-group Best_Practice_Security file-blocking "strict file blocking" sp
 set rulebase security rules "AD DNS In" profile-setting group Best_Practice_Security
 set rulebase security rules "AD DNS Out" profile-setting group Best_Practice_Security
 set rulebase security rules "Allow Ping" profile-setting group Best_Practice_Security
-set rulebase security rules "Block EB" profile-setting group Best_Practice_Security
+set rulebase security rules "Block Bad Ports" profile-setting group Best_Practice_Security
 set rulebase security rules "Centos E-comm" profile-setting group Best_Practice_Security
 set rulebase security rules "Debian DNS In" profile-setting group Best_Practice_Security
 set rulebase security rules "Debian DNS Out" profile-setting group Best_Practice_Security
