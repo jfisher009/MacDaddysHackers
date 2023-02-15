@@ -19,6 +19,9 @@ set address "splunk-nat" ip-netmask 172.25.34.9
 set address "ubuntu web-nat" ip-netmask 172.25.34.23
 set address bad-ip-10-4-4-4 ip-netmask 10.4.4.4
 
+set address-group BadGuys
+set address-group BadGuys static bad-ip-10-4-4-4
+
 set service HTTP protocol tcp port 80
 set service HTTPS protocol tcp port 443
 set service "SSH TCP" protocol tcp port 22
@@ -29,7 +32,7 @@ set service "DNS UDP" protocol udp port 53
 set service Splunk1 protocol tcp port 8089
 set service Splunk2 protocol tcp port 9997
 set service Splunk3 protocol tcp port 8000
-set service LMTP protocol tcp port 24
+set service SMTP protocol tcp port 25
 set service POP3 protocol tcp port 110
 set service POP3-TLS protocol tcp port 995
 set service IMAP protocol tcp port 143
@@ -67,11 +70,9 @@ set service-group "Default Egress" member NTP
 set service-group "Default Egress" member "DNS TCP"
 set service-group "Default Egress" member "DNS UDP"
 set service-group Mail
-set service-group Mail member LMTP
+set service-group Mail member SMTP
 set service-group Mail member POP3
-set service-group Mail member POP3-TLS
 set service-group Mail member IMAP
-set service-group Mail member IMAP-TLS
 set service-group DNS
 set service-group DNS member "DNS TCP"
 set service-group DNS member "DNS UDP"
@@ -96,12 +97,13 @@ set service-group SMB member "SMB over IP UDP2"
 delete rulebase security
 set rulebase security rules "Allow Ping" from any source any to any destination any application ping service application-default action allow
 set rulebase security rules "Block Bad Port" from any source any to any destination any application any service SMB action deny
-set rulebase security rules "Block Bad IPs In" from any source bad-ip-10-4-4-4 to any destination any application any service SMB action deny
-set rulebase security rules "Block Bad IPs Out" from any source any to any destination bad-ip-10-4-4-4 application any service any action deny
+set rulebase security rules "Block Bad IPs In" from any source BadGuys to any destination any application any service SMB action deny
+set rulebase security rules "Block Bad IPs Out" from any source any to any destination BadGuys application any service any action deny
 set rulebase security rules "Debian DNS In" from any source any to Internal destination debian application any service DNS action allow
 set rulebase security rules "Debian DNS In" from any source any to Internal destination debian application any service NTP action allow
 set rulebase security rules "Debian DNS In" destination debian-nat
-set rulebase security rules "Debian DNS Out" from Internal source debian to External destination any application any service DNS action allow
+set rulebase security rules "Debian DNS/NTP Out" from Internal source debian to External destination any application any service DNS action allow
+set rulebase security rules "Debian DNS/NTP Out" from Internal source debian to External destination any application any service NTP action allow
 set rulebase security rules "Ubuntu Web" from any source any to User destination "ubuntu web" application any service HTTP action allow
 set rulebase security rules "Ubuntu Web" destination "ubuntu web-nat"
 set rulebase security rules "Ubuntu Web" from any source any to User destination "ubuntu web" application any service HTTPS action allow
