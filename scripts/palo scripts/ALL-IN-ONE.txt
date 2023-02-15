@@ -99,9 +99,9 @@ set rulebase security rules "Allow Ping" from any source any to any destination 
 set rulebase security rules "Block Bad Ports" from any source any to any destination any application any service SMB action deny
 set rulebase security rules "Block Bad IPs In" from any source BadGuys to any destination any application any service SMB action deny
 set rulebase security rules "Block Bad IPs Out" from any source any to any destination BadGuys application any service any action deny
-set rulebase security rules "Debian DNS In" from any source any to Internal destination debian application any service DNS action allow
-set rulebase security rules "Debian DNS In" from any source any to Internal destination debian application any service NTP action allow
-set rulebase security rules "Debian DNS In" destination debian-nat
+set rulebase security rules "Debian DNS/NTP In" from any source any to Internal destination debian application any service DNS action allow
+set rulebase security rules "Debian DNS/NTP In" from any source any to Internal destination debian application any service NTP action allow
+set rulebase security rules "Debian DNS/NTP In" destination debian-nat
 set rulebase security rules "Debian DNS/NTP Out" from Internal source debian to External destination any application any service DNS action allow
 set rulebase security rules "Debian DNS/NTP Out" from Internal source debian to External destination any application any service NTP action allow
 set rulebase security rules "Ubuntu Web" from any source any to User destination "ubuntu web" application any service HTTP action allow
@@ -174,11 +174,14 @@ set rulebase security rules "AD DNS Out" profile-setting group Best_Practice_Sec
 set rulebase security rules "Allow Ping" profile-setting group Best_Practice_Security
 set rulebase security rules "Block Bad Ports" profile-setting group Best_Practice_Security
 set rulebase security rules "Centos E-comm" profile-setting group Best_Practice_Security
-set rulebase security rules "Debian DNS In" profile-setting group Best_Practice_Security
-set rulebase security rules "Debian DNS Out" profile-setting group Best_Practice_Security
+set rulebase security rules "Debian DNS/NTP In" profile-setting group Best_Practice_Security
+set rulebase security rules "Debian DNS/NTP Out" profile-setting group Best_Practice_Security
 set rulebase security rules "Default Egress" profile-setting group Best_Practice_Security
 set rulebase security rules "Fedora Mail" profile-setting group Best_Practice_Security
 set rulebase security rules "Fedora AD Access" profile-setting group Best_Practice_Security
+set rulebase security rules "Fedora AD Access" profile-setting group Best_Practice_Security
 set rulebase security rules "Internal Splunk" profile-setting group Best_Practice_Security
+set rulebase security rules "Serve Splunk" profile-setting group Best_Practice_Security
 set rulebase security rules "Ubuntu Web" profile-setting group Best_Practice_Security
+set rulebase security rules "Default Egress" profile-setting group Best_Practice_Security
 exit
