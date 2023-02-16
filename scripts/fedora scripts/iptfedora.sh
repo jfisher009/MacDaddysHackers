@@ -2,6 +2,7 @@
 
 # Flush existing rules
 iptables -F
+iptables -X
 
 # Set default policy
 iptables -P INPUT DROP
