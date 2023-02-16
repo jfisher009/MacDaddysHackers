@@ -48,8 +48,8 @@ set rulebase security rules "Debian DNS_NTP" from any source any to Internal des
 set rulebase security rules "Debian DNS_NTP" application ntp
 set rulebase security rules "Debian DNS_NTP" destination debian-nat
 set rulebase security rules "Default Egress" from any source any to External destination any application web-browsing service application-default action allow
-set rulebase security application dns
-set rulebase security application ntp
+set rulebase security rules "Default Egress" application dns
+set rulebase security rules "Default Egress" application ntp
 
 set profiles virus Best_Sec_Policy decoder ftp action reset-both
 set profiles virus Best_Sec_Policy decoder http action reset-both
