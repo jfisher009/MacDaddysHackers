@@ -25,37 +25,6 @@ set service "VPN 500" protocol udp port 500
 set service "VPN 4500" protocol udp port 4500
 set service port-8000 protocol tcp port 8000
 
-set service-group "Default Egress"
-set service-group "Default Egress" member HTTP
-set service-group "Default Egress" member HTTPS
-set service-group "Default Egress" member NTP
-set service-group "Default Egress" member "DNS TCP"
-set service-group "Default Egress" member "DNS UDP"
-set service-group Mail
-set service-group Mail member SMTP
-set service-group Mail member POP3
-set service-group Mail member IMAP
-set service-group DNS
-set service-group DNS member "DNS TCP"
-set service-group DNS member "DNS UDP"
-set service-group SSH
-set service-group SSH member "SSH TCP"
-set service-group SSH member "SSH UDP"
-set service-group "Fedora Auth"
-set service-group "Fedora Auth" member "LDAP TCP"
-set service-group "Fedora Auth" member "LDAP UDP"
-set service-group "Fedora Auth" member "LDAPS TCP"
-set service-group "Fedora Auth" member "LDAPS UDP"
-set service-group Splunk
-set service-group Splunk member Splunk1
-set service-group Splunk member Splunk2
-set service-group Splunk member Splunk3
-set service-group SMB
-set service-group SMB member "SMB over IP TCP"
-set service-group SMB member "SMB over IP UDP2"
-set service-group SMB member "SMB over IP TCP"
-set service-group SMB member "SMB over IP UDP2"
-
 delete rulebase security
 set rulebase security rules "Allow Ping" from any source any to any destination any application ping service application-default action allow
 set rulebase security rules "Block Bad IPs In" from any source BadGuys to any destination any application any service SMB action deny
