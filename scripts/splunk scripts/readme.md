@@ -30,28 +30,28 @@ make sure the firewall is on `netsh advfirewall set allprofiles state on`
 
 
 ### Change Mirrors
-`CERN made a convenient choice of keeping CentOS 6 vault access compatible with older TLS connections
+CERN made a convenient choice of keeping CentOS 6 vault access compatible with older TLS connections
 https://www.mark-gilbert.co.uk/fixing-y ... w-its-eol/
 
 so for a legacy CentOS 6.4 the /etc/yum.repos.d/CentOS-Base.repo
 
-[C6.4-base]
+`[C6.4-base]
 name=CentOS-6.4 - Base
 baseurl=http://linuxsoft.cern.ch/centos-vault/6.4/os/$basearch/
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 enabled=1
-metadata_expire=never
+metadata_expire=never`
 
-[C6.4-updates]
+`[C6.4-updates]
 name=CentOS-6.4 - Updates
 baseurl=http://linuxsoft.cern.ch/centos-vault/6 ... $basearch/
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 enabled=1
-metadata_expire=never
+metadata_expire=never`
 
-[C6.4-extras]
+`[C6.4-extras]
 name=CentOS-6.4 - Extras
 baseurl=http://linuxsoft.cern.ch/centos-vault/6 ... $basearch/
 gpgcheck=1
