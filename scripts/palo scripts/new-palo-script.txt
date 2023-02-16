@@ -47,7 +47,7 @@ set rulebase security rules "Serve Splunk" destination splunk-nat
 set rulebase security rules "Debian DNS_NTP" from any source any to Internal destination debian application dns service application-default action allow
 set rulebase security rules "Debian DNS_NTP" application ntp
 set rulebase security rules "Debian DNS_NTP" destination debian-nat
-set rulebase security rules "Default Egress" from any source analysis to External destination any application web-browsing service application-default action allow
+set rulebase security rules "Default Egress" from any source any to External destination any application web-browsing service application-default action allow
 set rulebase security application dns
 set rulebase security application ntp
 
