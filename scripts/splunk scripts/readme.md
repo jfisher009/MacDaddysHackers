@@ -37,6 +37,8 @@ change web admin password
 
 ### set splunk to listen in port 9997
 
+### Splunk install Sysmon add on
+
 ### Change NTP Server
 `vi /etc/ntp.conf`
 
