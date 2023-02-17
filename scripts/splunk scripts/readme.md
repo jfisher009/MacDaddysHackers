@@ -23,6 +23,9 @@ run `service ntpd restart` to restart the ntp process
 run `ntpq -p` to see the current ntp
 `ntpstat` to see the current ntp status
 
+### Copy /etc and splunk
+
+
 
 ### To see from windows
 add a route to the splunk machine from admin cmd at win10  `route add destination_network MASK subnet_mask  gateway_ip metric_cost`  
