@@ -3,6 +3,9 @@
 # Flush existing iptables rules
 iptables -F
 
+#Allow ntpstat
+iptables -A INPUT -p udp -m udp -j ACCEPT
+
 # Allow incoming traffic on port 8000 (Splunk web interface)
 iptables -A INPUT -p tcp --dport 8000 -j ACCEPT
 
