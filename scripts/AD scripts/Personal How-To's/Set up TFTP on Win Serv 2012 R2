@@ -17,5 +17,6 @@ Click Next, Next, and on the "Folder Location" screen, change the path from "C:\
 Click next and ensure the "add images to the server now" box is checked. Click Finish, then cancel.
 Create a file in the C:\tftp\boot folder called test.txt. This will be the file you test the tftp server with. 
 Remove the "Deployment Server" role you installed earlier through the "remove roles and features wizard" in server manager.
+Restart the server.
 Run the following command to test the tftp server: tftp -i localhost get boot\test.txt
 You should see that the file has successfully downloaded.
