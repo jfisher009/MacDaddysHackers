@@ -1,5 +1,5 @@
 ﻿net start w32time
-w32tm /config /manualpeerlist:pool.ntp.org /syncfromflags:manual /reliable:yes /update
+w32tm /config /manualpeerlist:time-a-g.nist.gov /syncfromflags:manual /reliable:yes /update
 net stop w32time
 net start w32time
 w32tm /monitor
