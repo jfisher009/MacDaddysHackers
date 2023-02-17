@@ -6,7 +6,9 @@ http://live.sysinternals.com/Sysmon64.exe
 in the downloads folder, run the following command:
 .\Sysmon64.exe -i sysmonconfig.xml
 
-CONFIGURE SPLUNK FORWARDER FOR THESE (first configure splunk normally)...
+HOW TO CONFIGURE SPLUNK FORWARDER FOR THESE (first configure splunk normally)...
+https://medium.com/@smurf3r5/splunking-with-sysmon-c321fe87c567
+
 Go here: C:\Program Files\SplunkUniversalForwarder\etc\apps\SplunkUniversalForwarder\local\inputs.conf
 Add this and save:
 [WinEventLog://Microsoft-Windows-Sysmon/Operational]
