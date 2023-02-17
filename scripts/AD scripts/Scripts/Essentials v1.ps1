@@ -1,16 +1,20 @@
-﻿#Stop and disable services
+﻿#Stop, disable, and view services status
 #printspooler
 Stop-Service -name Spooler -force
 Set-Service -name Spooler -StartupType disabled
+Get-Service -name Spooler
 #RDP Usermode Port
 Stop-Service -name UmRdpService
 Set-Service -name UmRdpService -StartupType disabled
+Get-Service -name UmRdpService
 #RDP Desktop Service
 Stop-Service -name SessionEnv
 Set-Service -name SessionEnv -StartupType disabled
+Get-Service -name SessionEnv
 #RDP
 Stop-Service -name TermService
 Set-Service -name TermService -StartupType disabled
+Get-Service -name TermService
 
 
 #Set inbound firewall rules
