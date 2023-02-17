@@ -11,13 +11,17 @@
 
 ### Change Password
 `sudo passwd root`  
+change web admin password
 
 ### Login Banner
 `vi /etc/motd`  
 “This computer network belongs to Team # and may be used by Team # employees ONLY and for approved work-related purposes. All activity is being monitored and logged. Team # reserves the right to consent to a valid law enforcement request to search the network logs for evidence of a crime stored within the network and can be used to prosecute abuse.”   
 
+### set splunk to listen in port 9997
+
 ### Change NTP Server
 `vi /etc/ntp.conf`
+
 change server to the debian ip address
 run `service ntpd restart` to restart the ntp process
 run `ntpq -p` to see the current ntp
@@ -25,12 +29,19 @@ run `ntpq -p` to see the current ntp
 
 ### Copy /etc and splunk
 
+### Use netstat to see what is listening
 
+### crontab
+`crontab -e`
+
+### Iptables 
 
 ### To see from windows
 add a route to the splunk machine from admin cmd at win10  `route add destination_network MASK subnet_mask  gateway_ip metric_cost`  
 `route add 172.25.34.0 mask 255.255.255.0 172.31.34.2`  
 make sure the firewall is on `netsh advfirewall set allprofiles state on`  
+
+### figure out index size in splunk and see if there is a way to delete older ones
 
 
 ### Change Mirrors
