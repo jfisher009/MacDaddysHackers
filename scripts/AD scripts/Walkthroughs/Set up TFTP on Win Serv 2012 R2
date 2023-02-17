@@ -2,8 +2,8 @@ http://woshub.com/how-to-install-tftp-server-on-windows-server-2012-r2/
 
 DO NOT USE THE ABOVE LINK!!!
 it was my starting point. I've left a simplified walkthrough below, so that you do not have to suffer as I have.
-If you are lost though, feel free to take a look at the walkthrough. it includes screenshots that might be helpful
-\jacob
+If you are lost though, feel free to take a look at the walkthrough. it includes screenshots that might be helpful ~Jacob~
+
 
 In Server Manager, install the "Windows Deployment Services" role in the "Add Roles and Features Wizard". Then, in "Role Services" only select "Transport Server." Click next and install.
 Open file manager and create a folder here > C:\tftp
