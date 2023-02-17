@@ -5,8 +5,8 @@ iptables -F
 iptables -X
 
 # Allow Incoming Web Trafic (HTTP and HTTPS)
-iptables -A INPUT -p tpc --dport 80 -j ACCEPT
-iptables -A INPUT -p tpc --dport 443 -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 
 # Allow SSH traffic on port 64435
 iptables -A INPUT -p tcp --dport 64435 -j ACCEPT
