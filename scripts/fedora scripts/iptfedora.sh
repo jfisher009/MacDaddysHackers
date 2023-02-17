@@ -4,6 +4,9 @@
 iptables -F
 iptables -X
 
+#Allow ntpstat
+iptables -A INPUT -p udp -m udp -j ACCEPT
+
 #Allow for already established connections
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
