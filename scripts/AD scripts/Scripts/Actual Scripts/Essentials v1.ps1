@@ -19,10 +19,20 @@ New-NetFirewallRule -DisplayName "Initial Block" `
 -LocalPort 135,139,445,49152-49157 `
 -Protocol TCP `
 -Action Block
+New-NetFirewallRule -DisplayName "Block Kerberos" `
+-Direction Inbound `
+-LocalPort 88 `
+-Protocol TCP `
+-Action Block
 #Set outbound firewall rules
 New-NetFirewallRule -DisplayName "Initial Block" `
 -Direction Outbound `
 -LocalPort 135,139,445,49152-49157 `
+-Protocol TCP `
+-Action Block
+New-NetFirewallRule -DisplayName "Block Kerberos" `
+-Direction Outbound `
+-LocalPort 88 `
 -Protocol TCP `
 -Action Block
 
