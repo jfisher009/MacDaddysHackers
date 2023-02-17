@@ -26,6 +26,8 @@ Enter a secure password for the VPN and save it. This will be used by clients to
 PRE-SHARED KEY PASSWORD: Te4m_14-Conn3c7@ccdc
 Under the IPv4 tab select "static address pool" and click "add"
 Make the start and end address within your subnet. Don't allow an IP that is currently being used.
+START IP ADDRESS: 172.20.242.100
+END IP ADDRESS: 172.20.242.150
 Click apply and close that window.
 Right click the server, All Tasks > Restart
 Open your firewall rules and add a new inbound rule. Predefined, "Routing and Remote Access." Click next
