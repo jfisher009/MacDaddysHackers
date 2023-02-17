@@ -4,11 +4,14 @@ cd /opt/splunkforwarder/bin
 sudo ./splunk start --accept-license 
 sudo ./splunk enable boot-start
 /opt/splunkforwarder/bin/splunk add forward-server 172.20.241.20:9997
-/opt/splunkforwarder/bin/splunk add monitor /var/log/auth.log -index main -sourcetype syslog
-/opt/splunkforwarder/bin/splunk add monitor /var/log/apache2/access.log -index main -sourcetype weblog
-/opt/splunkforwarder/bin/splunk add monitor /var/log/apache2/error.log -index main -sourcetype weblog
+/opt/splunkforwarder/bin/splunk add monitor /var/log/auth.log -index main -sourcetype linux_secure
 /opt/splunkforwarder/bin/splunk add monitor /var/log/httpd/access_log -index main -sourcetype weblog
 /opt/splunkforwarder/bin/splunk add monitor /var/log/httpd/error_log -index main -sourcetype weblog
+/opt/splunkforwarder/bin/splunk add monitor /var/log/httpd/ssl_access_log -index main -sourcetype weblog
+/opt/splunkforwarder/bin/splunk add monitor /var/log/httpd/ssl_error_log -index main -sourcetype weblog
+/opt/splunkforwarder/bin/splunk add monitor /var/log/httpd/ssl_request_log -index main -sourcetype weblog
+/opt/splunkforwarder/bin/splunk add monitor /var/log/httpd/modsec_debug.log -index main -sourcetype weblog
+/opt/splunkforwarder/bin/splunk add monitor /var/log/httpd/modsec_audit.log -index main -sourcetype weblog
 /opt/splunkforwarder/bin/splunk add monitor /var/log/secure -index main -sourcetype syslog
 /opt/splunkforwarder/bin/splunk add monitor /var/log/messages -index main -sourcetype syslog
 /opt/splunkforwarder/bin/splunk add monitor /var/log/httpd-errors.log -index main -sourcetype syslog
