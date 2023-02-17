@@ -1,3 +1,4 @@
+#UPDATED TO WORK FOR EITHER CLIENT OR SERVER SETUP
 #make sure windows time service is running
 net start w32time
 #Ask if using AD as server or client
