@@ -111,7 +111,7 @@ set rulebase security rules "Debian DNS_NTP" profile-setting group Best_Practice
 set rulebase security rules "Default Egress Applications" profile-setting group Best_Practice_Security
 set rulebase security rules "Default Egress Ports" profile-setting group Best_Practice_Security
 
-set deviceconfig system ntp-servers primary-ntp-server ntp-server-address 172.20.242.200 authentication-type none
+set deviceconfig system ntp-servers primary-ntp-server ntp-server-address 172.20.240.20 authentication-type none
 set rulebase security rules "Ubuntu Web" disabled yes
 set deviceconfig system login-banner "Team 14 network for work only. Monitoring in place. Will provide information to law enforcement if used without authorization."
 set rulebase nat rules "PA" disabled yes
