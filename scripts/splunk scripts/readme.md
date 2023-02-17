@@ -2,8 +2,8 @@
 
 # Windows 10
 
-### change password for minion
-`net user <Account Name> <Password>`
+### change password for minion and Administrator
+`net user <Account Name> <New Password>`
 
 ### See users 
 `net user`
