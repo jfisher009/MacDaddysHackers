@@ -47,6 +47,7 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent
 Right click, new > DWORD (32-bit) Value
 Name the value "AssumeUDPEncapsulationContextOnSendRule"
 Set the value to 1 (Hexadecimal)
+~Set the value to 2 (Hexadecimal) for the server~
 Restart the machine for the effects to take place.
 
 Test the VPN
