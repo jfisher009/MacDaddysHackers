@@ -4,37 +4,23 @@
 iptables -F
 iptables -X
 
-# Set default policy
-iptables -P INPUT DROP
-iptables -P OUTPUT DROP
-iptables -P FORWARD ACCEPT
+#Allow for already established connections
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 # Allow incoming web traffic (HTTP and HTTPS)
-iptables -A INPUT -p tcp --sport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 80 -m state --state ESTABLISHED -j ACCEPT
-iptables -A INPUT  -p tcp --sport 443 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 443 -m state --state ESTABLISHED -j ACCEPT
-
-iptables -A INPUT -p tcp -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 
 # Allow incoming mail traffic (POP3, IMAP, SMTP)
-iptables -A INPUT -p tcp --sport 110 -m state --state RELATED,ESTABLISHED -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 110 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A INPUT -p tcp --sport 25 -m state --state RELATED,ESTABLISHED -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 25 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A INPUT -p tcp --sport 143 -m state --state RELATED,ESTABLISHED -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 143 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT -p tcp --dport 110 -j ACCEPT
+iptables -A INPUT -p tcp --dport 143 -j ACCEPT
+iptables -A INPUT -p tcp --dport 25 -j ACCEPT
 
 # Allow SSH traffic on port 64435
-iptables -A INPUT -p tcp --sport 64435 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 64435 -m state --state ESTABLISHED -j ACCEPT
-
-# Allow incoming DNS traffic
-iptables -A INPUT -p udp --sport 53 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A OUTPUT -p udp --dport 53 -m state --state ESTABLISHED -j ACCEPT
-iptables -A INPUT -p tcp --sport 53 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 53 -m state --state ESTABLISHED -j ACCEPT
+iptables -A INPUT -p tcp --dport 64435 -j ACCEPT
 
 # Allow incoming ICMP traffic
 iptables -A INPUT -p icmp -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A OUTPUT -p icmp -m state --state ESTABLISHED -j ACCEPT
+
+#Drop all incoming traffic
+iptables -A INPUT -j DROP
