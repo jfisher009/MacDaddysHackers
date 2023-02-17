@@ -38,9 +38,3 @@ New-NetFirewallRule -DisplayName "Block Kerberos" `
 
 #Add AD User proftpd
 New-ADUser proftpd -AccountPassword(Read-Host -AsSecureString "Input Password") -Enabled $true -ChangePasswordAtLogon $false -PasswordNeverExpires $true
-
-#Open the important apps so they can be pinned to the taskbar
-#cmd
-#@ECHO OFF
-#explorer.exe Shell:::{2559a1f3-21d7-11d4-bdaf-00c04f60b9f0}
-#@start iexplore
