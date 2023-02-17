@@ -9,11 +9,14 @@ iptables -A INPUT -p tcp --dport 8000 -j ACCEPT
 # Allow incoming traffic on port 8089 (Splunk data input)
 iptables -A INPUT -p tcp --dport 8089 -j ACCEPT
 
-# Allow incoming traffic on port 514 (syslog)
-iptables -A INPUT -p udp --dport 514 -j ACCEPT
+# Allow incoming traffic on port 8089 (Splunk data input)
+iptables -A INPUT -p tcp --dport 8191 -j ACCEPT
 
-# Allow incoming traffic on port 1514 (syslog-tls)
-iptables -A INPUT -p tcp --dport 1514 -j ACCEPT
+# Allow incoming traffic on port 8089 (Splunk data input)
+iptables -A INPUT -p tcp --dport 8065 -j ACCEPT
+
+# Allow incoming traffic on port 8089 (Splunk data input)
+iptables -A INPUT -p tcp --dport 9997 -j ACCEPT
 
 # Allow incoming traffic from specific IP addresses or subnets
 # Internal, e1/2 subnet
