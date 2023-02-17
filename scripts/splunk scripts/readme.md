@@ -10,7 +10,7 @@
 
 ### To see from windows
 add a route to the splunk machine from admin cmd at win10  `route add destination_network MASK subnet_mask  gateway_ip metric_cost`  
-`route add 172.25.34.0 mask 255.255.255.0 172.31.34.2`  
+`route add -P 172.25.34.0 mask 255.255.255.0 172.31.34.2`  
 display routes `route print`
 make sure the firewall is on `netsh advfirewall set allprofiles state on`  
 
