@@ -27,9 +27,9 @@ run `service ntpd restart` to restart the ntp process
 run `ntpq -p` to see the current ntp
 `ntpstat` to see the current ntp status
 
-### Copy /etc and splunk
+### ! Copy /etc and splunk
 
-### Use netstat to see what is listening
+### ! Use netstat to see what is listening
 
 ### crontab
 `crontab -e`
