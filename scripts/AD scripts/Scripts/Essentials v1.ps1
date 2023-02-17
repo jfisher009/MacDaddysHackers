@@ -16,7 +16,6 @@ Stop-Service -name TermService
 Set-Service -name TermService -StartupType disabled
 Get-Service -name TermService
 
-
 #Set inbound firewall rules
 New-NetFirewallRule -DisplayName "Initial Block" `
 -Direction Inbound `
