@@ -87,3 +87,6 @@ If ((Get-Service -name Sysmon64).Status -ne "Running")
 wevtutil sl Microsoft-Windows-Sysmon/Operational "/ca:O:BAG:SYD:(A;;0x5;;;BA)(A;;0x1;;;S-1-5-20)(A;;0x1;;;S-1-5-32-573)"
 
 #~~~~~~END SYSMON AND TCP VIEW SECTION~~~~~~
+
+#Keep window open until finished reviewing
+Read-Host -Prompt "Finished, Press Enter to exit"
