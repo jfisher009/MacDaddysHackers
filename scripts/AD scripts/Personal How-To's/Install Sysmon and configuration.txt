@@ -1,0 +1,7 @@
+Config:
+https://raw.githubusercontent.com/olafhartong/sysmon-modular/master/sysmonconfig.xml
+Sysmon:
+http://live.sysinternals.com/Sysmon64.exe
+
+in the downloads folder, run the following command:
+.\Sysmon64.exe -i sysmonconfig.xml
