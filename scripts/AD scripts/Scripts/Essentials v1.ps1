@@ -40,7 +40,7 @@ New-NetFirewallRule -DisplayName "Block Kerberos" `
 -Action Block
 
 #Add AD User proftpd
-New-ADUser proftpd -AccountPassword(Read-Host -AsSecureString "Input Password") -Enabled $true -ChangePasswordAtLogon $false -PasswordNeverExpires $true
+New-ADUser proftpd -AccountPassword(Read-Host -AsSecureString "Input Password for user proftpd") -Enabled $true -ChangePasswordAtLogon $false -PasswordNeverExpires $true
 
 #Keep window open until finished reviewing
 Read-Host -Prompt "Finished, Press Enter to exit"
