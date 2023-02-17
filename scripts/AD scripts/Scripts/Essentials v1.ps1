@@ -39,7 +39,7 @@ New-NetFirewallRule -DisplayName "Block Kerberos" `
 -Protocol TCP `
 -Action Block
 
-#Add AD User proftpd
+#Add AD User proftpd for Mail Binding
 New-ADUser proftpd -AccountPassword(Read-Host -AsSecureString "Input Password for user proftpd") -Enabled $true -ChangePasswordAtLogon $false -PasswordNeverExpires $true
 
 #Keep window open until finished reviewing
