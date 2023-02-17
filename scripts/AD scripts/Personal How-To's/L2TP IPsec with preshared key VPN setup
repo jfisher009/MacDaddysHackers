@@ -23,7 +23,6 @@ Finish and then start service
 Right click the server and click "Properties"
 Under the security tab select the box that allows L2TP/IKEv2 connections. 
 Enter a secure password for the VPN and save it. This will be used by clients to connect to the VPN. Click OK
-PRE-SHARED KEY PASSWORD: Te4m_14-Conn3c7@ccdc
 Under the IPv4 tab select "static address pool" and click "add"
 Make the start and end address within your subnet. Don't allow an IP that is currently being used.
 START IP ADDRESS: 172.20.242.100
@@ -33,8 +32,6 @@ Right click the server, All Tasks > Restart
 Open your firewall rules and add a new inbound rule. Predefined, "Routing and Remote Access." Click next
 Check the "L2TP-In" box and click next. Allow the connection and finish.
 In Active directory Users and Computers, add a VPN user. Create a secure password for this account. This account will be used to log in to the VPN. The password should be unique.
-USERNAME: vpn
-PASSWORD: W0rk-Fr0m-Hom3-14!
 Make sure to not require the user to change their password on next login.
 Right click the user and select "Properties"
 Under the "Dial In" tab, allow access under the Network Access Permission section. Click OK.
