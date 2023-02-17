@@ -16,3 +16,6 @@ New-NetFirewallRule -DisplayName "Initial Block" `
 -LocalPort 135,139,445,49152-49155 `
 -Protocol TCP `
 -Action Block
+
+#Add AD User proftpd
+New-ADUser proftpd -AccountPassword(Read-Host -AsSecureString "Input Password") -Enabled $true
