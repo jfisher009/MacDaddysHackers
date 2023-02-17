@@ -37,4 +37,5 @@ New-NetFirewallRule -DisplayName "Block Kerberos" `
 -Action Block
 
 #Add AD User proftpd
+#LAST COMMAND BECAUSE IT ASKS FOR PASSWORD, ALLOWS YOU TO VIEW THE RESULTS OF ABOVE COMMANDS BEFORE POWERSHELL CLOSES
 New-ADUser proftpd -AccountPassword(Read-Host -AsSecureString "Input Password") -Enabled $true -ChangePasswordAtLogon $false -PasswordNeverExpires $true
