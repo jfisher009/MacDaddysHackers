@@ -3,6 +3,12 @@
 # Flush existing iptables rules
 iptables -F
 
+#Allow for already established connections
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+# Allow incoming ICMP traffic
+iptables -A INPUT -p icmp -m state --state NEW,ESTABLISHED -j ACCEPT
+
 #Allow ntpstat
 iptables -A INPUT -p udp -m udp -j ACCEPT
 
