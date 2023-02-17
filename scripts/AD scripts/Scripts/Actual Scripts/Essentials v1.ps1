@@ -37,7 +37,7 @@ New-NetFirewallRule -DisplayName "Block Kerberos" `
 -Action Block
 
 #Add AD User proftpd
-New-ADUser proftpd -AccountPassword(Read-Host -AsSecureString "Input Password") -Enabled $true
+New-ADUser proftpd -AccountPassword(Read-Host -AsSecureString "Input Password") -Enabled $true -ChangePasswordAtLogon $false -PasswordNeverExpires $true
 
 #Open the important apps so they can be pinned to the taskbar
 cmd
