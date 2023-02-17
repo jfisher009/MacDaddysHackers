@@ -12,9 +12,11 @@ iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 
 # Allow DNS and NTP
-iptables -A INPUT -p tcp --dport 123 -j ACCEPT
+iptables -A INPUT -p udp --dport 123 -j ACCEPT
 iptables -A INPUT -p tcp --dport 53 -j ACCEPT
 iptables -A INPUT -p tcp --dport 953 -j ACCEPT
+iptables -A INPUT -p udp --dport 53 -j ACCEPT
+iptables -A INPUT -p udp --dport 953 -j ACCEPT
 
 
 # Allow incoming ICMP traffic
