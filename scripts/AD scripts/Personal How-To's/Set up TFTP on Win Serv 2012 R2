@@ -20,3 +20,5 @@ Remove the "Deployment Server" role you installed earlier through the "remove ro
 Restart the server.
 Run the following command to test the tftp server: tftp -i localhost get boot\test.txt
 You should see that the file has successfully downloaded.
+
+On the client, enable the tftp client role (possibly turn off firewall for a minute)
