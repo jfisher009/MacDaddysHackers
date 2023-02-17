@@ -42,5 +42,8 @@ New-NetFirewallRule -DisplayName "Block Kerberos" `
 #Add AD User proftpd for Mail Binding
 New-ADUser proftpd -AccountPassword(Read-Host -AsSecureString "Input Password for user proftpd") -Enabled $true -ChangePasswordAtLogon $false -PasswordNeverExpires $true
 
+#Open Task Scheduler
+taskschd
+
 #Keep window open until finished reviewing
 Read-Host -Prompt "Finished, Press Enter to exit"
