@@ -1,19 +1,28 @@
-﻿#Stop and disable printspooler service
+﻿#Stop and disable services
+#printspooler
 Stop-Service -name Spooler -force
 Set-Service -name Spooler -StartupType disabled
-#Confirm status of printspooler
-Get-Service -name Spooler
+#RDP
+Stop-Service -name TermService
+Set-Service -name TermService -StartupType disabled
+#RDP Usermode Port
+Stop-Service -name UmRdpService
+Set-Service -name UmRdpService -StartupType disabled
+#RDP Desktop Service
+Stop-Service -name SessionEnv
+Set-Service -name SessionEnv -StartupType disabled
+
 
 #Set inbound firewall rules
 New-NetFirewallRule -DisplayName "Initial Block" `
 -Direction Inbound `
--LocalPort 135,139,445,49152-49155 `
+-LocalPort 135,139,445,49152-49157 `
 -Protocol TCP `
 -Action Block
 #Set outbound firewall rules
 New-NetFirewallRule -DisplayName "Initial Block" `
 -Direction Outbound `
--LocalPort 135,139,445,49152-49155 `
+-LocalPort 135,139,445,49152-49157 `
 -Protocol TCP `
 -Action Block
 
