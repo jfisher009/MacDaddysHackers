@@ -4,6 +4,9 @@
 iptables -F
 iptables -X
 
+#Allow ntpstat
+iptables -A INPUT -p udp -m udp -j ACCEPT
+
 # Allow Incoming Web Trafic (HTTP and HTTPS)
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp --dport 443 -j ACCEPT
