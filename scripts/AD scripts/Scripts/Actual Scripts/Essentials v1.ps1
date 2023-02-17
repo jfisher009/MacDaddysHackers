@@ -2,15 +2,15 @@
 #printspooler
 Stop-Service -name Spooler -force
 Set-Service -name Spooler -StartupType disabled
-#RDP
-Stop-Service -name TermService
-Set-Service -name TermService -StartupType disabled
 #RDP Usermode Port
 Stop-Service -name UmRdpService
 Set-Service -name UmRdpService -StartupType disabled
 #RDP Desktop Service
 Stop-Service -name SessionEnv
 Set-Service -name SessionEnv -StartupType disabled
+#RDP
+Stop-Service -name TermService
+Set-Service -name TermService -StartupType disabled
 
 
 #Set inbound firewall rules
