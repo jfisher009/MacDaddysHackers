@@ -9,6 +9,7 @@ In Server Manager, install the "Windows Deployment Services" role in the "Add Ro
 Open file manager and create a folder here > C:\tftp
 open Registry Editor (powershell: "regedit") and navigate to HKLM\SYSTEM\CurrentControlSet\services\WDSServer\Providers\WDSTFTP
 Create a new string paramater with the name "RootFolder" and set the value to the folder you created earlier (C:\tftp)
+Edit the security of this file to include only the tftp user
 Start WDS with this command: WDSUTIL /Start-TransportServer
 Now return to the "Add Roles and Features Wizard" in Server Manager. Install the "TFTP Client" feature, and the "Deployment Server" role you deselected earlier from the WDS Section. 
 In Server Manager, in the left column select "WDS", right click the server, and click "Windows Deployment Services Management Console"
