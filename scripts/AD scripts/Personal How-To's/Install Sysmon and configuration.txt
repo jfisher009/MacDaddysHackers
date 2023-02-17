@@ -5,3 +5,12 @@ http://live.sysinternals.com/Sysmon64.exe
 
 in the downloads folder, run the following command:
 .\Sysmon64.exe -i sysmonconfig.xml
+
+CONFIGURE SPLUNK FORWARDER FOR THESE...
+Go here: C:\Program Files\SplunkUniversalForwarder\etc\apps\SplunkUniversalForwarder\local\inputs.conf
+Add this and save:
+[WinEventLog://Microsoft-Windows-Sysmon/Operational]
+checkpointInterval = 5
+current_only = 0
+disabled = 0
+start_from = oldest
