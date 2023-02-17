@@ -14,6 +14,8 @@ iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 # Allow DNS and NTP
 iptables -A INPUT -p tcp --dport 123 -j ACCEPT
 iptables -A INPUT -p tcp --dport 53 -j ACCEPT
+iptables -A INPUT -p tcp --dport 953 -j ACCEPT
+
 
 # Allow incoming ICMP traffic
 iptables -A INPUT -p icmp -m state --state NEW,ESTABLISHED -j ACCEPT
