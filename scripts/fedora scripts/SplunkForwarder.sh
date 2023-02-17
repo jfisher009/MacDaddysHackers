@@ -11,7 +11,6 @@ sudo ./splunk enable boot-start
 /opt/splunkforwarder/bin/splunk add monitor /var/log/httpd/error_log -index main -sourcetype weblog
 /opt/splunkforwarder/bin/splunk add monitor /var/log/httpd/access_log -index main -sourcetype weblog
 /opt/splunkforwarder/bin/splunk add monitor /var/log/secure -index main -sourcetype syslog
-/opt/splunkforwarder/bin/splunk add monitor /var/log/messages -index main -sourcetype syslog
 /opt/splunkforwarder/bin/splunk add monitor /var/log/httpd-errors.log -index main -sourcetype syslog
 /opt/splunkforwarder/bin/splunk add monitor /var/log/yum.log -index main -sourcetype syslog
 /opt/splunkforwarder/bin/splunk add monitor /var/log/mysql.err -index main -sourcetype syslog
