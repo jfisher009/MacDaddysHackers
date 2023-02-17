@@ -33,8 +33,6 @@ set rulebase security rules "Ubuntu Web" from any source any to User destination
 set rulebase security rules "Ubuntu Web" destination "ubuntu web-nat"
 set rulebase security rules "AD DNS In" from any source any to User destination ad application dns service application-default action allow
 set rulebase security rules "AD DNS In" destination "ad-nat"
-set rulebase security rules "AD NTP In" from Internal source any to User destination ad application ntp service application-default action allow
-set rulebase security rules "AD NTP In" from Public
 set rulebase security rules "Centos E-comm" from any source any to Public destination centos application web-browsing service application-default action allow
 set rulebase security rules "Centos E-comm" destination centos-nat
 set rulebase security rules "Fedora Mail" from any source any to Public destination fedora application smtp service application-default action allow
