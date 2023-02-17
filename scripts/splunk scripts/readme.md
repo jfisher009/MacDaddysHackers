@@ -2,10 +2,23 @@
 
 # Windows 10
 
+### change password for minion
+`net user <Account Name> <Password>`
+
+### See users 
+`net user`
+
 ### To see from windows
 add a route to the splunk machine from admin cmd at win10  `route add destination_network MASK subnet_mask  gateway_ip metric_cost`  
 `route add 172.25.34.0 mask 255.255.255.0 172.31.34.2`  
+display routes `route print`
 make sure the firewall is on `netsh advfirewall set allprofiles state on`  
+
+
+
+### Running services
+search services
+stop remote desktop, print spooler, remote access connection
 
 ## Useful Commands
 ### Status, Start, Stop, Restart
