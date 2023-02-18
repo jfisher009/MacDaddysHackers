@@ -14,12 +14,16 @@ add a route to the splunk machine from admin cmd at win10  `route add destinatio
 display routes `route print`
 make sure the firewall is on `netsh advfirewall set allprofiles state on`  
 
-* Install nmap
-* install wireshark
-
 ### Running services
 search services
 stop remote desktop, print spooler, remote access connection
+
+* check netstat
+* task manager?
+* task scheduler?
+
+* Install nmap
+* install wireshark
 
 ## Useful Commands
 ### Status, Start, Stop, Restart
