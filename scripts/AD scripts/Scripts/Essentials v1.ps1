@@ -105,7 +105,7 @@ Read-Host -Prompt "Finished configuring w32time, Press Enter to continue"
 
 #Disable a bunch of other stuff that is not needed... NOT YET TESTED
 #LIST NOT COMPLETE, NOT ALL FIREWALL RULES ARE LISTED
-echo "Disabling unnecessary firewall 'allow' rules"
+echo "Disabling unnecessary firewall inbound 'allow' rules"
 Set-NetFirewallRule -DisplayName "Active Directory Domain Controller - NetBIOS name resolution (UDP-In)" `
 -Enabled False
 Set-NetFirewallRule -DisplayName "Active Directory Domain Controller - SAM/LSA (NP-TCP-In)" `
@@ -214,11 +214,37 @@ Set-NetFirewallRule -DisplayName "Routing and Remote Access (L2TP-In)" `
 Set-NetFirewallRule -DisplayName "Windows Management Instrumentation (DCOM-In)" `
 -Enabled False
 
+#Configure outbound rules
+echo "disabling unnecessary firewall outbound 'allow' rules"
+Set-NetFirewallRule -DisplayName "Active Directory Web Services (TCP-Out)" `
+-Enabled False
+
+#Core Networking rules? Are these needed?
+
+Set-NetFirewallRule -DisplayName "DHCPv6 Relay Agent [Server] (UDP-Out)" `
+-Enabled False
+Set-NetFirewallRule -DisplayName "File and Printer Sharing (LLMNR-UDP-Out)" `
+-Enabled False
+Set-NetFirewallRule -DisplayName "File and Printer Sharing (NB-Datagram-Out)" `
+-Enabled False
+Set-NetFirewallRule -DisplayName "File and Printer Sharing (NB-Name-Out)" `
+-Enabled False
+Set-NetFirewallRule -DisplayName "File and Printer Sharing (NB-Session-Out)" `
+-Enabled False
+Set-NetFirewallRule -DisplayName "File and Printer Sharing (SMB-Out)" `
+-Enabled False
+Set-NetFirewallRule -DisplayName "Routing and Remote Access (GRE-Out)" `
+-Enabled False
+Set-NetFirewallRule -DisplayName "Routing and Remote Access (L2TP-Out)" `
+-Enabled False
+Set-NetFirewallRule -DisplayName "Routing and Remote Access (PPTP-Out)" `
+-Enabled False
+
 #state that firewall is configured
-echo "Finished configuring firewall rules"
+echo "Finished configuring inbound and outbound firewall rules"
 
 #Add AD User proftpd for Mail Binding
-echo "Adding proftpd user"
+echo "Adding proftpd user for binding to mail server"
 New-ADUser proftpd -AccountPassword(Read-Host -AsSecureString "Input Password for user proftpd") -Enabled $true -ChangePasswordAtLogon $false -PasswordNeverExpires $true
 
 #Open Task Scheduler
