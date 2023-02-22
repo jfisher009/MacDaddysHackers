@@ -3,18 +3,22 @@ echo "modifying services"
 #printspooler
 Stop-Service -name Spooler -force
 Set-Service -name Spooler -StartupType disabled
+echo "Print Spooler service status:"
 Get-Service -name Spooler
 #RDP Usermode Port
 Stop-Service -name UmRdpService
 Set-Service -name UmRdpService -StartupType disabled
+echo "RDP Usermode Port service status:"
 Get-Service -name UmRdpService
 #RDP Desktop Service
 Stop-Service -name SessionEnv
 Set-Service -name SessionEnv -StartupType disabled
+echo "RDP Desktop service status:"
 Get-Service -name SessionEnv
 #RDP
 Stop-Service -name TermService
 Set-Service -name TermService -StartupType disabled
+echo "RDP service status:"
 Get-Service -name TermService
 
 #Set explicit inbound firewall rules
