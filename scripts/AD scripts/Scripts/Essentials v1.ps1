@@ -47,16 +47,17 @@ New-NetFirewallRule -DisplayName "Block Kerberos" `
 
 #Modify LDAP Authentication Firewall rules to only allow authentication from Fedora
 echo "configuring LDAP Authentication firewall rules"
+$MailAddr = ReadHost -Prompt "Input Mail Server IP for firewall rules"
 Set-NetFirewallRule -DisplayName "Active Directory Domain Controller - LDAP (UDP-In)" `
--Enabled True -LocalAddress 172.20.241.40
+-Enabled True -LocalAddress $MailAddr
 Set-NetFirewallRule -DisplayName "Active Directory Domain Controller - LDAP (TCP-In)" `
--Enabled True -LocalAddress 172.20.241.40
+-Enabled True -LocalAddress $MailAddr
 Set-NetFirewallRule -DisplayName "Active Directory Domain Controller - LDAP for Global Catalog (TCP-In)" `
--Enabled True -LocalAddress 172.20.241.40
+-Enabled True -LocalAddress $MailAddr
 Set-NetFirewallRule -DisplayName "Active Directory Domain Controller - Secure LDAP (TCP-In)" `
--Enabled True -LocalAddress 172.20.241.40
+-Enabled True -LocalAddress $MailAddr
 Set-NetFirewallRule -DisplayName "Active Directory Domain Controller - Secure LDAP for Global Catalog (TCP-In)" `
--Enabled True -LocalAddress 172.20.241.40
+-Enabled True -LocalAddress $MailAddr
 
 #Configure DNS Firewall Rules to only accept from the public and private profiles
 echo "configuring DNS firewall rules"
