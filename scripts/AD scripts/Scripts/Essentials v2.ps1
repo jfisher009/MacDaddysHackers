@@ -180,4 +180,4 @@ echo ""
 taskschd
 
 #Keep window open until finished reviewing
-Read-Host -Prompt "Finished script, Press Enter to exit"
+Read-Host -Prompt "Finished script, Check for errors and then press ENTER to exit"
