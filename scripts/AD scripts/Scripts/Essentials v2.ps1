@@ -175,9 +175,9 @@ echo ""
 New-ADUser proftpd -AccountPassword(Read-Host -AsSecureString "Input Password for user proftpd") -Enabled $true -ChangePasswordAtLogon $false -PasswordNeverExpires $true
 
 #Open Task Scheduler
-echo "opening task scheduler"
+echo "opening task scheduler, let the threat hunting begin!"
 echo ""
 taskschd
 
 #Keep window open until finished reviewing
-Read-Host -Prompt "Finished, Press Enter to exit"
+Read-Host -Prompt "Finished script, Press Enter to exit"
