@@ -1,30 +1,36 @@
 #Stop, disable, and view services status
 echo "modifying services"
+echo ""
 #printspooler
 Stop-Service -name Spooler -force
 Set-Service -name Spooler -StartupType disabled
 echo "Print Spooler service status:"
 Get-Service -name Spooler
+echo ""
 #RDP Usermode Port
 Stop-Service -name UmRdpService
 Set-Service -name UmRdpService -StartupType disabled
 echo "RDP Usermode Port service status:"
 Get-Service -name UmRdpService
+echo ""
 #RDP Desktop Service
 Stop-Service -name SessionEnv
 Set-Service -name SessionEnv -StartupType disabled
 echo "RDP Desktop service status:"
 Get-Service -name SessionEnv
+echo ""
 #RDP
 Stop-Service -name TermService
 Set-Service -name TermService -StartupType disabled
 echo "RDP service status:"
 Get-Service -name TermService
+echo ""
 
 #Start configuring firewall rules below
 
 #First, disable all inbound rules
 echo "disabling all inbound rules"
+echo ""
 Disable-NetFirewallRule -Direction Inbound
 
 #Set explicit inbound firewall deny rule...just to be safe...
@@ -34,6 +40,7 @@ New-NetFirewallRule -DisplayName "Initial Block" `
 -LocalPort 88,135,139,445,49152-49157 `
 -Protocol TCP `
 -Action Block
+echo ""
 
 #Set outbound firewall deny rule identical to inbound
 New-NetFirewallRule -DisplayName "Initial Block" `
@@ -41,9 +48,11 @@ New-NetFirewallRule -DisplayName "Initial Block" `
 -LocalPort 88,135,139,445,49152-49157 `
 -Protocol TCP `
 -Action Block
+echo ""
 
 #Begin configuring allowed rules
 echo "enabling good rules"
+echo ""
 Set-NetFirewallRule -DisplayName "Active Directory Domain Controller -  Echo Request (ICMPv4-In)" `
 -Enabled True
 Set-NetFirewallRule -DisplayName "Google Chrome (mDNS-In)" `
@@ -57,7 +66,9 @@ Set-NetFirewallRule -DisplayName "World Wide Web Services (HTTP Traffic-In)" `
 
 #Modify LDAP Authentication Firewall rules to only allow authentication from Fedora
 echo "configuring LDAP Authentication firewall rules"
+echo ""
 $MailAddr = Read-Host -Prompt "Input Mail Server IP for firewall rules"
+echo ""
 Set-NetFirewallRule -DisplayName "Active Directory Domain Controller - LDAP (UDP-In)" `
 -Enabled True -LocalAddress $MailAddr
 Set-NetFirewallRule -DisplayName "Active Directory Domain Controller - LDAP (TCP-In)" `
@@ -71,6 +82,7 @@ Set-NetFirewallRule -DisplayName "Active Directory Domain Controller - Secure LD
 
 #Configure DNS Firewall Rules to only accept from the public and private profiles
 echo "configuring DNS firewall rules"
+echo ""
 Set-NetFirewallRule -DisplayName "DNS (TCP, Incoming)" `
 -Enabled True -Profile Public,Private
 Set-NetFirewallRule -DisplayName "DNS (UDP, Incoming)" `
@@ -78,41 +90,53 @@ Set-NetFirewallRule -DisplayName "DNS (UDP, Incoming)" `
 
 #Configure w32tm firewall rule to only accept packets from Debian NTP server
 echo "configuring w32time firewall rule"
+echo ""
+$NtpAddr = Read-Host -Prompt "Input external NTP Server IP"
+echo ""
 Set-NetFirewallRule -DisplayName "Active Directory Domain Controller - W32Time (NTP-UDP-In)" `
--Enabled True -LocalAddress 172.20.240.20
+-Enabled True -LocalAddress $NtpAddr
 
 #Configure w32time (ntp) to point to debian now that firewall rule is set
 #make sure windows time service is running
 echo "preparing to set up NTP..."
+echo ""
 net start w32time
 #Ask if using AD as server or client
 $Option = Read-Host -Prompt "Setup NTP as server? ('y' or 'n')"
+echo ""
 if ($Option -eq "y") {
     #configure windows time service (NTP) as server using time.nist.gov
     echo "SETTING UP NTP SERVER"
+    echo ""
     w32tm /config /manualpeerlist:time.nist.gov /syncfromflags:manual /reliable:yes /update
     } else {
     #configure windows time service (NTP) as client using debian
     echo "SETTING UP NTP CLIENT"
-    $ServerIP = Read-Host -Prompt "Input Server IP"
-    w32tm /config /manualpeerlist:$ServerIP /syncfromflags:manual /reliable:yes /update
+    echo ""
+    w32tm /config /manualpeerlist:$NtpAddr /syncfromflags:manual /reliable:yes /update
     }
 
 #restart the service
 echo "restarting service"
+echo ""
 net stop w32time
 net start w32time
 echo "service restarted, see results:"
+echo ""
 #check peers to make sure it is active
 echo "---PEERS OUTPUT---"
 w32tm /query /peers
+echo ""
 #check source to make sure proper source is listed (NOT Local CMOS Clock)
 echo "---SOURCE OUTPUT---"
-echo "(May not update immediately. If currently Local CMOS Clock, run 'w32tm /query /source' after script finishes)"
+echo ""
 w32tm /query /source
+echo "ATTENTION! May not update immediately. If currently Local CMOS Clock, run 'w32tm /query /source' after script finishes"
+echo ""
 
 #keep window open until finished reviewing
 Read-Host -Prompt "Finished configuring w32time, Press Enter to continue"
+echo ""
 
 #Rules I am unsure of, so I am enabling until I can test later:
 Set-NetFirewallRule -DisplayName "Core Networking - Destination Unreachable Fragmentation Needed (ICMPv4-In)" `
@@ -132,6 +156,7 @@ Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv
 
 #Configure outbound rules (is this necessary? default is to allow unless specified, these rules technically do nothing...)
 echo "disabling unnecessary firewall outbound 'allow' rules"
+echo ""
 Set-NetFirewallRule -DisplayName "Active Directory Web Services (TCP-Out)" `
 -Enabled False
 
@@ -158,13 +183,16 @@ Set-NetFirewallRule -DisplayName "Routing and Remote Access (PPTP-Out)" `
 
 #state that firewall is configured
 echo "Finished configuring inbound and outbound firewall rules"
+echo ""
 
 #Add AD User proftpd for Mail Binding
 echo "Adding proftpd user for binding to mail server"
+echo ""
 New-ADUser proftpd -AccountPassword(Read-Host -AsSecureString "Input Password for user proftpd") -Enabled $true -ChangePasswordAtLogon $false -PasswordNeverExpires $true
 
 #Open Task Scheduler
 echo "opening task scheduler"
+echo ""
 taskschd
 
 #Keep window open until finished reviewing
