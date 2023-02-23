@@ -57,7 +57,7 @@ Set-NetFirewallRule -DisplayName "World Wide Web Services (HTTP Traffic-In)" `
 
 #Modify LDAP Authentication Firewall rules to only allow authentication from Fedora
 echo "configuring LDAP Authentication firewall rules"
-$MailAddr = ReadHost -Prompt "Input Mail Server IP for firewall rules"
+$MailAddr = Read-Host -Prompt "Input Mail Server IP for firewall rules"
 Set-NetFirewallRule -DisplayName "Active Directory Domain Controller - LDAP (UDP-In)" `
 -Enabled True -LocalAddress $MailAddr
 Set-NetFirewallRule -DisplayName "Active Directory Domain Controller - LDAP (TCP-In)" `
