@@ -25,7 +25,12 @@ stop remote desktop, print spooler, remote access connection
 * Install nmap
 * install wireshark
 
+## Splunk
+`https://research.splunk.com/detections/`
+
 ## Useful Commands
+
+
 ### Status, Start, Stop, Restart
 `/opt/splunk/bin/splunk status`  
 `/opt/splunk/bin/splunk start`  
