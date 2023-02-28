@@ -179,7 +179,7 @@ echo "Confirm Administrator accounts!!!"
 net localgroup administrators
 echo ""
 echo "to view these again, run 'net localgroup administrators' in powershell"
-Read-Host -Prompt "Confirm Administrators, then click enter to continue."
+Read-Host -Prompt "Confirm Administrators, then click ENTER to continue."
 
 #Open Task Scheduler
 echo "opening task scheduler, let the threat hunting begin!"
