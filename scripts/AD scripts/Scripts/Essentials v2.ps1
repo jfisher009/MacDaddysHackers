@@ -174,6 +174,7 @@ echo "Adding proftpd user for binding to mail server"
 echo ""
 New-ADUser proftpd -AccountPassword(Read-Host -AsSecureString "Input Password for user proftpd") -Enabled $true -ChangePasswordAtLogon $false -PasswordNeverExpires $true
 ehco ""
+
 #View localgroup administrator accounts
 echo "Confirm Administrator accounts!!!"
 net localgroup administrators
