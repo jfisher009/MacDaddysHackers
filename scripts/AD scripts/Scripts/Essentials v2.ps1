@@ -74,9 +74,9 @@ Set-NetFirewallRule -DisplayName "Active Directory Domain Controller - Secure LD
 #Configure DNS Firewall Rules to only accept from the public and private profiles
 echo "configuring DNS firewall rules"
 Set-NetFirewallRule -DisplayName "DNS (TCP, Incoming)" `
--Enabled True -Profile Public,Private
+-Enabled True -Profile Public,Private,Domain
 Set-NetFirewallRule -DisplayName "DNS (UDP, Incoming)" `
--Enabled True -Profile Public,Private
+-Enabled True -Profile Public,Private,Domain
 
 #Configure w32tm firewall rule to only accept packets from Debian NTP server
 echo "configuring w32time firewall rule"
