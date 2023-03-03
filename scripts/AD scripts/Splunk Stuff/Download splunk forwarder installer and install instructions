@@ -19,3 +19,6 @@ On the "Receiving Indexer" screen, the IP should be the internal IP Address of t
 Click Install to install the forwarder, and wait for it to install. 
 Click Finish.
 Finally, confirm with splunk people to ensure events are being forwarded to splunk. If it isn't working within 10 minutes, uninstall the program (stop the service if necessary) and re-install following the same steps.
+
+IF USING CENTRAL LOGGER TO RECEIVE LOGS, AND THEN FORWARD TO SPLUNK...
+Configure as above, except do not check any of the boxes on the Log types to send. Only browse to the file of the centralized logging program and forward it to splunk.
