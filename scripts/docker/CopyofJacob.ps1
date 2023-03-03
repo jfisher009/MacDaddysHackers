@@ -35,6 +35,16 @@ New-NetFirewallRule -DisplayName "Initial Block" `
 -Protocol TCP `
 -Action Block
 
+#set inbound allow http and https
+Write-Output "allowing inbound http and https"
+New-NetFirewallRule -DisplayName "Allow http and https" `
+-Direction Inbound `
+-LocalPort 80,443 `
+-Protocol TCP `
+-Action Allow
+Write-Output ""
+
+
 #Set outbound firewall deny rule identical to inbound
 New-NetFirewallRule -DisplayName "Initial Block" `
 -Direction Outbound `
@@ -45,16 +55,16 @@ Write-Output ""
 
 #Begin configuring allowed rules
 Write-Output "enabling good rules"
-Set-NetFirewallRule -DisplayName "Active Directory Domain Controller -  Echo Request (ICMPv4-In)" `
+Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" `
 -Enabled True
 # Set-NetFirewallRule -DisplayName "Google Chrome (mDNS-In)" `
 # -Enabled True
 Set-NetFirewallRule -DisplayName "Secure Socket Tunneling Protocol (SSTP-In)" `
 -Enabled True
-Set-NetFirewallRule -DisplayName "World Wide Web Services (HTTPS Traffic-In)" `
--Enabled True
-Set-NetFirewallRule -DisplayName "World Wide Web Services (HTTP Traffic-In)" `
--Enabled True
+#Set-NetFirewallRule -DisplayName "World Wide Web Services (HTTPS Traffic-In)" `
+#-Enabled True
+#Set-NetFirewallRule -DisplayName "World Wide Web Services (HTTP Traffic-In)" `
+#-Enabled True
 
 # #Modify LDAP Authentication Firewall rules to only allow authentication from Fedora
 # Write-Output "configuring LDAP Authentication firewall rules"
