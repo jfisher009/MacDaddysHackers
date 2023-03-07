@@ -1,0 +1,48 @@
+<dashboard version="1.1" theme="dark">
+  <label>LinuxTest2</label>
+  <row>
+    <panel>
+      <event>
+        <search>
+          <query>sourcetype=syslog | rex "\w{3}\s\d{2}\s\d{2}:\d{2}:\d{2}\s(?&lt;hostname&gt;\S+)" | rex "\suser\s(?&lt;User&gt;[^\s]+)\s" | search root | stats count as "Root Activity Count" by hostname</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="list.drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </event>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Failed Login</title>
+        <search>
+          <query>index=main source="/var/log/secure" "Failed Login"</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <refresh>30s</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <format type="color" field="host">
+          <colorPalette type="sharedList"></colorPalette>
+          <scale type="sharedCategory"></scale>
+        </format>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <event>
+        <search>
+          <query>index=main "Command Line"  host="172.20.241.30"</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="list.drilldown">none</option>
+      </event>
+    </panel>
+  </row>
+</dashboard>
