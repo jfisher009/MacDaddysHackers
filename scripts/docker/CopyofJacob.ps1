@@ -92,8 +92,15 @@ Set-NetFirewallRule -DisplayName "Secure Socket Tunneling Protocol (SSTP-In)" `
 Write-Output "configuring w32time firewall rule"
 Write-Output ""
 $NtpAddr = Read-Host -Prompt "Input external NTP Server IP"
-Set-NetFirewallRule -DisplayName "Docker - W32Time (NTP-UDP-In)" `
--Enabled True -LocalAddress $NtpAddr
+# Set-NetFirewallRule -DisplayName "Docker - W32Time (NTP-UDP-In)" `
+# -Enabled True -LocalAddress $NtpAddr
+New-NetFirewallRule -DisplayName "NTP allow" `
+-Direction Inbound, Outbound `
+-LocalPort 123`
+-Protocol UDP `
+-Action Allow `
+-LocalAddress $NtpAddr
+Write-Output ""
 
 #Configure w32time (ntp) to point to debian now that firewall rule is set
 #make sure windows time service is running
