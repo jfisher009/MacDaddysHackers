@@ -95,8 +95,14 @@ $NtpAddr = Read-Host -Prompt "Input external NTP Server IP"
 # Set-NetFirewallRule -DisplayName "Docker - W32Time (NTP-UDP-In)" `
 # -Enabled True -LocalAddress $NtpAddr
 New-NetFirewallRule -DisplayName "NTP allow" `
--Direction Inbound, Outbound `
--LocalPort 123`
+-Direction Inbound`
+-Protocol UDP `
+-Action Allow `
+-LocalAddress $NtpAddr
+Write-Output ""
+
+New-NetFirewallRule -DisplayName "NTP allow" `
+-Direction Outbound`
 -Protocol UDP `
 -Action Allow `
 -LocalAddress $NtpAddr
