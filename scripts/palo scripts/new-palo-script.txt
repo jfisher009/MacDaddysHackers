@@ -42,6 +42,7 @@ set rulebase security rules "Fedora Mail" destination fedora-nat
 set rulebase security rules "Fedora AD Auth" from Public source fedora to User destination ad application ldap service application-default action allow
 set rulebase security rules "Splunk Forwarder" from Internal source any to Public destination splunk application splunk service application-default action allow
 set rulebase security rules "Splunk Forwarder" from User
+set rulebase security rules "Splunk Forwarder" application web-browsing
 set rulebase security rules "Serve Splunk" from any source any to Public destination splunk application web-browsing service port-8000 action allow
 set rulebase security rules "Serve Splunk" destination splunk-nat
 set rulebase security rules "Debian DNS_NTP" from any source any to Internal destination debian application dns service application-default action allow
